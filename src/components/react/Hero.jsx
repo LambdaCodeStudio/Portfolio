@@ -23,9 +23,9 @@ const Hero = () => {
           <div className="relative inline-flex group">
             <div className="absolute -inset-1 bg-gradient-to-r from-violet-600 to-pink-600 rounded-lg blur-lg opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
             <button className="relative px-6 sm:px-8 py-3 sm:py-4 bg-gray-900/30 backdrop-blur-xl rounded-lg leading-none flex items-center space-x-2 border border-violet-500/20">
-              <span className="text-base sm:text-lg text-gray-300 group-hover:text-white transition duration-200">
+              <a  href="/proyectos" className="text-base sm:text-lg text-gray-300 group-hover:text-white transition duration-200">
                 Ver Proyectos
-              </span>
+              </a>
               <svg className="w-4 h-4 text-gray-300 group-hover:text-white transition duration-200 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
