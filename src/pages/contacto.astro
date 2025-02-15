@@ -1,0 +1,122 @@
+---
+// src/pages/contacto.astro
+import Layout from '../components/layout/Layout.astro';
+import Contact from '../components/react/Contact';
+import { MapPin, Mail, Phone, Clock } from 'lucide-react';
+
+const contactInfo = [
+  {
+    icon: MapPin,
+    title: "Ubicación",
+    details: ["Ciudad, País", "Código Postal 12345"]
+  },
+  {
+    icon: Mail,
+    title: "Email",
+    details: ["contacto@lambdacodestudio.com", "soporte@lambdacodestudio.com"]
+  },
+  {
+    icon: Phone,
+    title: "Teléfono",
+    details: ["+1234567890", "+0987654321"]
+  },
+  {
+    icon: Clock,
+    title: "Horario",
+    details: ["Lun - Vie: 9:00 - 18:00", "Sáb: 10:00 - 14:00"]
+  }
+];
+
+const faqs = [
+  {
+    question: "¿Qué servicios ofreces?",
+    answer: "Ofrecemos desarrollo web full stack, diseño UI/UX, desarrollo de aplicaciones móviles y consultoría tecnológica."
+  },
+  {
+    question: "¿Cómo es el proceso de trabajo?",
+    answer: "Iniciamos con una consulta gratuita, seguida de una propuesta detallada. Trabajamos de manera iterativa, manteniendo una comunicación constante."
+  },
+  {
+    question: "¿Cuáles son los tiempos de entrega promedio?",
+    answer: "Los tiempos varían según el proyecto. Típicamente, un sitio web toma 4-8 semanas, mientras que una aplicación puede tomar 8-12 semanas."
+  },
+  {
+    question: "¿Ofreces mantenimiento post-proyecto?",
+    answer: "Sí, ofrecemos planes de mantenimiento y soporte continuo para asegurar que tu proyecto siga funcionando perfectamente."
+  }
+];
+---
+
+<Layout title="Contacto | LambdaCodeStudio">
+  <!-- Hero Section -->
+  <div class="relative min-h-[40vh] flex items-center justify-center bg-black">
+    <div class="absolute inset-0 bg-gradient-to-b from-violet-900/20 to-transparent"></div>
+    <div class="relative text-center px-4 sm:px-6 lg:px-8">
+      <h1 class="text-5xl sm:text-6xl font-bold mb-6">
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-violet-500 via-fuchsia-500 to-pink-500">
+          Contáctanos
+        </span>
+      </h1>
+      <p class="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
+        ¿Tienes un proyecto en mente? Hablemos sobre cómo podemos hacerlo realidad.
+      </p>
+    </div>
+  </div>
+
+  <!-- Info Cards Grid -->
+  <div class="bg-black py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {contactInfo.map(({ icon: Icon, title, details }) => (
+          <div class="bg-gray-900/30 backdrop-blur-xl p-6 rounded-xl border border-violet-500/20 group hover:bg-gray-900/50 transition-all duration-300">
+            <Icon className="w-8 h-8 text-violet-400 mb-4" />
+            <h3 class="text-xl font-semibold text-white mb-3">{title}</h3>
+            {details.map((detail) => (
+              <p class="text-gray-400">{detail}</p>
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact Form Section -->
+  <Contact client:load />
+
+  <!-- FAQ Section -->
+  <div class="bg-black py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-4xl font-bold text-center text-white mb-12">
+        Preguntas Frecuentes
+      </h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {faqs.map((faq) => (
+          <div class="bg-gray-900/30 backdrop-blur-xl p-6 rounded-xl border border-violet-500/20 group hover:bg-gray-900/50 transition-all duration-300">
+            <h3 class="text-xl font-semibold text-white mb-3 group-hover:text-violet-400 transition-colors">
+              {faq.question}
+            </h3>
+            <p class="text-gray-400">
+              {faq.answer}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA Section -->
+  <div class="bg-black py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="relative group inline-block">
+        <div class="absolute -inset-1 bg-gradient-to-r from-violet-600 to-pink-600 rounded-lg blur-lg opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
+        <a 
+          href="mailto:contacto@lambdacodestudio.com"
+          class="relative px-8 py-4 bg-black rounded-lg text-white inline-block"
+        >
+          Iniciar Proyecto →
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>
