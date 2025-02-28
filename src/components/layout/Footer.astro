@@ -1,6 +1,6 @@
 ---
 // src/components/layout/Footer.astro
-import { Github, Linkedin, Mail, Twitter } from 'lucide-react';
+import { Github, Instagram, Linkedin, Mail, TwitchIcon, Twitter, X } from 'lucide-react';
 const currentYear = new Date().getFullYear();
 ---
 
@@ -11,10 +11,10 @@ const currentYear = new Date().getFullYear();
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
       <div>
         <h3 class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-violet-500 to-fuchsia-500 mb-4">
-          LambdaCodeStudio
+          Lambda Code Studio
         </h3>
         <p class="text-gray-400">
-          Desarrollando experiencias digitales únicas y memorables.
+          Desarrollando soluciones digitales únicas y eficientes. Que crecen a la par de tu empresa y tus clientes.
         </p>
       </div>
       
@@ -22,13 +22,13 @@ const currentYear = new Date().getFullYear();
         <h4 class="text-white font-semibold mb-4">Enlaces</h4>
         <ul class="space-y-2">
           <li>
-            <a href="/proyectos" class="text-gray-400 hover:text-violet-400 transition-colors duration-300">Proyectos</a>
+            <a href="/proyectos" class="text-gray-400 hover:text-violet-400 transition-colors duration-300">Trabajos realizados</a>
           </li>
           <li>
-            <a href="/sobre-mi" class="text-gray-400 hover:text-violet-400 transition-colors duration-300">Sobre Mí</a>
+            <a href="/sobre-mi" class="text-gray-400 hover:text-violet-400 transition-colors duration-300">Quienes somos</a>
           </li>
           <li>
-            <a href="/contacto" class="text-gray-400 hover:text-violet-400 transition-colors duration-300">Contacto</a>
+            <a href="/contacto" class="text-gray-400 hover:text-violet-400 transition-colors duration-300">Contactanos</a>
           </li>
         </ul>
       </div>
@@ -36,16 +36,13 @@ const currentYear = new Date().getFullYear();
       <div>
         <h4 class="text-white font-semibold mb-4">Redes Sociales</h4>
         <div class="flex gap-4">
-          <a href="#" class="text-gray-400 hover:text-violet-400 transition-colors duration-300">
-            <Github className="w-6 h-6" />
+          <a href="https://www.instagram.com/lambdacodestudio/" class="text-gray-400 hover:text-violet-400 transition-colors duration-300">
+            <Instagram className="w-6 h-6" />
           </a>
           <a href="#" class="text-gray-400 hover:text-violet-400 transition-colors duration-300">
             <Linkedin className="w-6 h-6" />
           </a>
-          <a href="#" class="text-gray-400 hover:text-violet-400 transition-colors duration-300">
-            <Twitter className="w-6 h-6" />
-          </a>
-          <a href="#" class="text-gray-400 hover:text-violet-400 transition-colors duration-300">
+          <a href="mailto:lambdacodestudio@gmail.com" class="text-gray-400 hover:text-violet-400 transition-colors duration-300">
             <Mail className="w-6 h-6" />
           </a>
         </div>
@@ -54,7 +51,7 @@ const currentYear = new Date().getFullYear();
     
     <div class="border-t border-gray-800 pt-8">
       <p class="text-center text-gray-400">
-        © {currentYear} LambdaCodeStudio. Todos los derechos reservados.
+        © {currentYear} Lambda Code Studio. Todos los derechos reservados.
       </p>
     </div>
   </div>

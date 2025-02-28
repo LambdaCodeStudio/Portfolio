@@ -4,31 +4,62 @@ import Layout from '../components/layout/Layout.astro';
 import { ArrowDown } from 'lucide-react';
 
 const categories = [
-  "Todos", "Web", "Mobile", "UI/UX", "AI/ML"
+  "Todos", "Web", "Mobile", "UI/UX", "WebApps Empresariales"
 ];
 
 const allProjects = [
-  {
-    title: "✨ Proyecto Awesome",
-    description: "Una aplicación web increíble con efectos visuales únicos",
-    tags: ["React", "Three.js", "GSAP"],
-    image: "https://picsum.photos/600/400",
-    gradient: "from-violet-500 to-fuchsia-500",
-    category: "Web",
-    link: "https://proyecto1.com",
-    github: "https://github.com/proyecto1"
-  },
-  {
-    title: "🎮 Game Project",
-    description: "Videojuego desarrollado con las últimas tecnologías",
-    tags: ["Unity", "C#", "Blender"],
-    image: "https://picsum.photos/600/400",
-    gradient: "from-fuchsia-500 to-pink-500",
-    category: "Mobile",
-    link: "https://proyecto2.com",
-    github: "https://github.com/proyecto2"
-  },
-  // Añade más proyectos aquí...
+{
+  title: "🦷 Odonto Care",
+  description: "🦷 Aplicación para Consultorios Odontológicos\n" +
+    "🏥 Nuestra app ha sido diseñada para optimizar la gestión de consultorios odontológicos, \n" +
+    "permitiendo un control completo sobre los registros y la atención de los pacientes. \n" +
+    "📋💉✨ Funciones destacadas: \n" +
+    "✅ Historias Clínicas Digitales \n" +
+    "📝💻 – Registra y consulta la información de tus pacientes de manera rápida y segura. \n" +
+    "✅ Recordatorios Automatizados \n" +
+    "⏰📩 – Envía notificaciones a los pacientes para recordar turnos y tratamientos. \n" +
+    "✅ Gestión de Prestaciones y Pagos \n" +
+    "💰📊 – Mantén un control preciso sobre los servicios brindados y los movimientos financieros del consultorio.\n" +
+    "✅ Odontograma Digital \n" +
+    "🦷📌 – Completa y visualiza el estado bucal del paciente con una interfaz intuitiva. \n" +
+    "🔧 Totalmente personalizable: Si necesitas alguna modificación o tienes nuevas ideas, \n" +
+    "¡todo es charlable y se puede agregar a la app! 🚀",
+  tags: ["React", "Node.js", "Express.js", "MongoDB", "JWT"],
+  image: "https://picsum.photos/600/400",
+  gradient: "from-violet-500 to-fuchsia-500",
+  category: "Web",
+  link: "https://proyecto1.com",
+  github: "https://github.com/proyecto1"
+}
+,
+{
+  title: "🛎️ CleanOrg - Gestión Inteligente de Tareas",
+  description: "🛎️ **CleanOrg - Gestión Inteligente de Tareas** 🏨🏢\n" +
+    "CleanOrg es la solución perfecta para automatizar la asignación de tareas y trabajos dentro de **pensiones, hoteles y empresas**. 📋⚡ Con un sistema inteligente, la app distribuye responsabilidades de manera equitativa, asegurando un ambiente organizado y eficiente.\n" +
+    "✨ **Funciones destacadas:** ✅ **Asignación Automática de Tareas** 🤖📌 – Designa trabajos de forma justa y eficiente, optimizando el rendimiento del equipo. ✅ **Sistema de Recompensas** 🏆🎉 – Premia a los cumplidores, incentivando la productividad y el compromiso. ✅ **Redistribución de Responsabilidades** 🔄🚀 – Si alguien no cumple con su tarea, el sistema reasigna el trabajo de manera estratégica. ✅ **Ideal para Pensiones, Hoteles y Empresas** 🏨🏢 – Adapta la gestión de tareas a cualquier tipo de establecimiento.\n" +
+    "🔧 **Totalmente personalizable**: Si tienes nuevas ideas o necesitas ajustes, ¡todo es charlable y se puede agregar a la app! 🚀",
+  tags: ["React", "Node.js", "Express.js", "MongoDB", "JWT", "PWA", "Material-UI"],
+  image: "https://picsum.photos/600/400",
+  gradient: "from-violet-500 to-fuchsia-500",
+  category: "Todos",
+  link: "https://proyecto1.com",
+  github: "https://github.com/proyecto1"
+},
+{
+  title: "📄 Descargo Mi Factura - Gestión Simplificada de Facturación",
+  description: "📄 Descargo Mi Factura - Gestión Simplificada de Facturación 💰📊\n" +
+    "Con Descargo Mi Factura, tu empresa puede ofrecer a sus clientes una solución eficiente para el manejo y control de facturas y costos de manera automatizada y organizada. 📑⚡ ¡Olvídate del papeleo y simplifica la administración financiera con esta poderosa herramienta!\n" +
+    "✨ Funciones destacadas:\n" +
+    "✅ Gestión Centralizada de Facturas 🗂️📄 – Visualiza, descarga y organiza todas las facturas en un solo lugar.\n" +
+    "✅ Acceso Rápido y Seguro 🔐⚡ – Tus clientes podrán consultar su información en cualquier momento y desde cualquier dispositivo.\n" +
+    "🔧 Totalmente adaptable: ¿Necesitas funciones personalizadas? ¡Todo es charlable y se puede agregar a la app! 🚀",
+  tags: ["React-Native", "Node.js", "Express.js", "MongoDB", "Mobile App"],
+  image: "https://picsum.photos/600/400",
+  gradient: "from-violet-500 to-fuchsia-500",
+  category: "Web",
+  link: "https://proyecto1.com",
+  github: "https://github.com/proyecto1"
+}
 ];
 ---
 
@@ -39,11 +70,11 @@ const allProjects = [
     <div class="relative text-center px-4 sm:px-6 lg:px-8">
       <h1 class="text-5xl sm:text-6xl font-bold mb-6">
         <span class="bg-clip-text text-transparent bg-gradient-to-r from-violet-500 via-fuchsia-500 to-pink-500">
-          Mis Proyectos
+          Algunas de nuestras Apps
         </span>
       </h1>
       <p class="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
-        Explora mi portfolio de proyectos en desarrollo web, mobile y diseño UI/UX
+        Explora nuestro portafolio de proyectos y descubre cómo podemos ayudarte a llevar tu empresa al siguiente nivel.
       </p>
       <ArrowDown className="w-8 h-8 mx-auto text-violet-400 animate-bounce" />
     </div>

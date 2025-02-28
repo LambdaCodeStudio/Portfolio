@@ -4,23 +4,23 @@ import { Github, ExternalLink, Sparkles } from 'lucide-react';
 const Projects = () => {
   const projects = [
     {
-      title: "✨ Proyecto Awesome",
-      description: "Una aplicación web increíble con efectos visuales únicos",
-      tags: ["React", "Three.js", "GSAP"],
+      title: "🦷 Odonto Care",
+      description: "Una aplicación Super Eficiente para tu Consultorio Dental",
+      tags: ["React", "Express.js", "MongoDB"],
       image: "https://picsum.photos/600/400",
       gradient: "from-violet-500 to-fuchsia-500"
     },
     {
-      title: "🎮 Game Project",
-      description: "Videojuego desarrollado con las últimas tecnologías",
-      tags: ["Unity", "C#", "Blender"],
+      title: "🛎️ CleanOrg - Gestión Inteligente de Tareas",
+      description: "La organizacion empresarial hecha software",
+      tags: ["React-Native", "Js", "Express.js"],
       image: "https://picsum.photos/600/400",
       gradient: "from-fuchsia-500 to-pink-500"
     },
     {
-      title: "🎨 Arte Digital",
-      description: "Colección de arte digital generativo",
-      tags: ["P5.js", "Canvas", "WebGL"],
+      title: "📄 Descargo Mi Factura - Gestión Simplificada de Facturación",
+      description: "📄 Descargo Mi Factura - Gestión Simplificada de Facturación 💰📊",
+      tags: ["PWA", "Js", "Play Store"],
       image: "https://picsum.photos/600/400",
       gradient: "from-pink-500 to-rose-500"
     }

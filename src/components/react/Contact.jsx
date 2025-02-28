@@ -64,7 +64,7 @@ const Contact = () => {
                 <MapPin className="w-6 h-6 text-violet-400" />
                 <h3 className="text-xl font-semibold text-white">Ubicación</h3>
               </div>
-              <p className="text-gray-400 pl-10">Ciudad, País</p>
+              <p className="text-gray-400 pl-10">Ciudad, La Plata</p>
             </div>
 
             <div className="bg-gray-900/30 backdrop-blur-xl p-6 rounded-xl border border-violet-500/20">
@@ -72,7 +72,7 @@ const Contact = () => {
                 <Mail className="w-6 h-6 text-violet-400" />
                 <h3 className="text-xl font-semibold text-white">Email</h3>
               </div>
-              <p className="text-gray-400 pl-10">contacto@lambdacodestudio.com</p>
+              <p className="text-gray-400 pl-10">lambdacodestudio@gmail.com</p>
             </div>
 
             <div className="bg-gray-900/30 backdrop-blur-xl p-6 rounded-xl border border-violet-500/20">
@@ -80,7 +80,7 @@ const Contact = () => {
                 <Phone className="w-6 h-6 text-violet-400" />
                 <h3 className="text-xl font-semibold text-white">Teléfono</h3>
               </div>
-              <p className="text-gray-400 pl-10">+1234567890</p>
+              <p className="text-gray-400 pl-10">+54-2227-478196</p>
             </div>
 
             <div className="bg-gray-900/30 backdrop-blur-xl p-6 rounded-xl border border-violet-500/20">

@@ -9,7 +9,7 @@ const About = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="text-center mb-16">
           <h2 className="text-5xl font-bold text-white mb-6">
-            Sobre Mí
+            Que es Lamda Code Studio?
           </h2>
           <div className="w-32 h-1 bg-gradient-to-r from-violet-500 via-fuchsia-500 to-pink-500 mx-auto rounded-full"></div>
         </div>
@@ -19,10 +19,7 @@ const About = () => {
             <div className="absolute inset-0 bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-xl blur-lg opacity-20 group-hover:opacity-30 transition-opacity duration-500"></div>
             <div className="relative bg-gray-900/30 backdrop-blur-xl p-8 rounded-xl border border-violet-500/20">
               <p className="text-gray-300 text-lg leading-relaxed mb-6">
-                Soy un desarrollador Full Stack apasionado por crear experiencias digitales únicas. Con más de 5 años de experiencia en el desarrollo web, me especializo en construir aplicaciones modernas y eficientes.
-              </p>
-              <p className="text-gray-300 text-lg leading-relaxed">
-                Mi objetivo es combinar diseño y funcionalidad para entregar productos que no solo se vean bien, sino que también proporcionen una excelente experiencia de usuario.
+              En Labda Code Studio, transformamos ideas en soluciones digitales innovadoras.<br/> Nos especializamos en el desarrollo de páginas web, aplicaciones multiplataforma, web apps y landing pages diseñadas para hacer que tu empresa sea más eficiente y competitiva. <br /> Con un enfoque en calidad, rendimiento y experiencia de usuario, creamos herramientas digitales que potencian el crecimiento de tu negocio. 🚀
               </p>
             </div>
           </div>
@@ -35,7 +32,7 @@ const About = () => {
                 </div>
                 <h3 className="text-xl font-semibold text-white">Experiencia Técnica</h3>
               </div>
-              <p className="text-gray-400">Especializado en React, Node.js, y las últimas tecnologías web.</p>
+              <p className="text-gray-400">Nos especializamos en las últimas tecnologías web y nativas.</p>
             </div>
 
             <div className="bg-gray-900/30 backdrop-blur-xl p-6 rounded-xl border border-violet-500/20 group hover:bg-gray-900/50 transition-all duration-300">
@@ -45,7 +42,7 @@ const About = () => {
                 </div>
                 <h3 className="text-xl font-semibold text-white">Experiencia Laboral</h3>
               </div>
-              <p className="text-gray-400">Más de 5 años trabajando en proyectos innovadores.</p>
+              <p className="text-gray-400">Nuestra amplia cartilla de clientes nos abala el trabajo relizado a lo largo de estos años.</p>
             </div>
 
             <div className="bg-gray-900/30 backdrop-blur-xl p-6 rounded-xl border border-violet-500/20 group hover:bg-gray-900/50 transition-all duration-300">
@@ -55,7 +52,7 @@ const About = () => {
                 </div>
                 <h3 className="text-xl font-semibold text-white">Educación</h3>
               </div>
-              <p className="text-gray-400">Formación continua en desarrollo web y nuevas tecnologías.</p>
+              <p className="text-gray-400">Formados universitariamente aptos para el mercado laboral.</p>
             </div>
           </div>
         </div>

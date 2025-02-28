@@ -17,7 +17,7 @@ const Hero = () => {
           </div>
           
           <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-400 mb-8 sm:mb-12 font-light max-w-2xl mx-auto">
-            Desarrollador Full Stack & Diseñador UI/UX
+            Desarrolladores Full Stack especializados en tecnologías modernas y de vanguardia.
           </p>
           
           <div className="relative inline-flex group">

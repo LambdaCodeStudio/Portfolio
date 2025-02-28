@@ -1,12 +1,12 @@
 import React from 'react';
-import { Code2, Palette, Gauge, Laptop, Smartphone, Brain } from 'lucide-react';
+import { Code2, Palette, Gauge, Laptop, Smartphone, Brain, Shield } from 'lucide-react';
 
 const Skills = () => {
   const skills = [
     {
       icon: <Code2 className="w-8 h-8" />,
       title: "Desarrollo Frontend",
-      description: "React, Vue, Astro",
+      description: "React, React-Native, Astro",
       color: "from-violet-500 to-fuchsia-500"
     },
     {
@@ -24,7 +24,7 @@ const Skills = () => {
     {
       icon: <Laptop className="w-8 h-8" />,
       title: "Desarrollo Backend",
-      description: "Node.js, Python",
+      description: "Node.js, Python, Java Spring",
       color: "from-rose-500 to-red-500"
     },
     {
@@ -38,6 +38,12 @@ const Skills = () => {
       title: "AI Integration",
       description: "TensorFlow, PyTorch",
       color: "from-violet-500 to-purple-500"
+    },
+    {
+      icon: <Shield className="w-8 h-8" />,
+      title: "Testing",
+      description: "Jest, Mocha, Selenium, JUnit",
+      color: "from-red-500 to-blue-500"
     }
   ];
 
@@ -47,7 +53,7 @@ const Skills = () => {
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <h2 className="text-5xl font-bold text-center text-white mb-6">
-          Mis Habilidades
+          Skills
         </h2>
         <div className="w-32 h-1 bg-gradient-to-r from-violet-500 via-fuchsia-500 to-pink-500 mx-auto rounded-full mb-16"></div>
         

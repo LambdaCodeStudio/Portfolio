@@ -2,7 +2,7 @@
 // src/pages/sobre-mi.astro
 import Layout from '../components/layout/Layout.astro';
 import About from '../components/react/About';
-import { Clock, Users, Coffee, Code, Award, BookOpen } from 'lucide-react';
+import { Clock, Users, Coffee, Network, Code, Award, BookOpen } from 'lucide-react';
 
 const stats = [
   {
@@ -12,34 +12,31 @@ const stats = [
   },
   {
     icon: Users,
-    value: "50+",
+    value: "20+",
     label: "Clientes Satisfechos",
   },
   {
-    icon: Coffee,
-    value: "100+",
+    icon: Network,
+    value: "60+",
     label: "Proyectos Completados",
   },
 ];
 
 const achievements = [
   {
-    year: "2023",
-    title: "Senior Developer",
-    company: "Tech Company",
-    description: "Liderazgo de equipo y desarrollo de proyectos innovadores."
+    title: "Odonto Care",
+    company: "Aplicación Multiplataforma",
+    description: "App creada para ser usada en consultorios Odontologicos, tanto como para los registros de los pacientes como para la atencion de los mismos ."
   },
   {
-    year: "2021",
-    title: "Full Stack Developer",
-    company: "Start-up Innovation",
-    description: "Desarrollo de aplicaciones web y móviles."
+    title: "Descargo Mi factura",
+    company: "Aplicacion Mobile",
+    description: "Con nuestra app tu empresa ofrecer a sus clientes un servicio de manejo y control de las facturas y costos que le asignes."
   },
   {
-    year: "2019",
-    title: "Frontend Developer",
-    company: "Creative Agency",
-    description: "Especialización en interfaces de usuario y experiencia de usuario."
+    title: "CleanOrg",
+    company: "We App",
+    description: "CleanOrg automatiza y lleva a cabo la designacion de tareas y trabajos en el marco de una Pension / Hotel / Empresa. Premia a los cumplidores y da tareas a los que no cumplan con sus obligaciones"
   },
 ];
 ---
@@ -53,11 +50,11 @@ const achievements = [
         <div class="text-center lg:text-left">
           <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
             <span class="bg-clip-text text-transparent bg-gradient-to-r from-violet-500 via-fuchsia-500 to-pink-500">
-              Hola, John Wick
+              Hola, somos Lambda Code Studio
             </span>
           </h1>
           <p class="text-xl text-gray-400 mb-8 max-w-2xl mx-auto lg:mx-0">
-            Desarrollador Full Stack & Diseñador UI/UX apasionado por crear experiencias digitales únicas y memorables.
+            Desarrolladores Full Stack & Diseñador UI/UX apasionados por crear soluciones digitales que ayuden a las empresas a crecer y a mejorar su presencia en línea.
           </p>
         </div>
         <div class="relative group">
