@@ -10,7 +10,7 @@ const Hero = () => {
           <div className="mb-6 sm:mb-8">
             <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-500 via-fuchsia-500 to-pink-500 animate-gradient-x">
-                LambdaCodeStudio
+                Lambda Code Studio
               </span>
             </h1>
             <div className="h-1 w-24 sm:w-32 mx-auto mt-4 sm:mt-6 rounded-full bg-gradient-to-r from-violet-500 via-fuchsia-500 to-pink-500"></div>

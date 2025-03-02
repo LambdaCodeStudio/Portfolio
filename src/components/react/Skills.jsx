@@ -34,12 +34,6 @@ const Skills = () => {
       color: "from-amber-500 to-orange-500"
     },
     {
-      icon: <Brain className="w-8 h-8" />,
-      title: "AI Integration",
-      description: "TensorFlow, PyTorch",
-      color: "from-violet-500 to-purple-500"
-    },
-    {
       icon: <Shield className="w-8 h-8" />,
       title: "Testing",
       description: "Jest, Mocha, Selenium, JUnit",
