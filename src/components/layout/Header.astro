@@ -1,128 +1,358 @@
 ---
 // src/components/layout/Header.astro
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Code, Rocket, MessageCircle } from 'lucide-react';
+
+// Obtener la ruta actual para marcar el enlace activo
+const pathname = Astro.url.pathname;
 ---
 
-<header class="fixed w-full z-50 bg-black/50 backdrop-blur-md border-b border-violet-500/10">
-  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20">
+<header class="fixed w-full z-50 transition-all duration-300" id="navbar">
+  <!-- Header Background with Enhanced Glassmorphism -->
+  <div class="absolute inset-0 bg-black/60 backdrop-blur-2xl border-b border-white/10"></div>
+  
+  <!-- Glass effect overlay -->
+  <div class="absolute inset-0 bg-gradient-to-r from-violet-500/5 via-transparent to-fuchsia-500/5"></div>
+  
+  <!-- Noise texture for glass realism -->
+  <div class="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[length:4px_4px]"></div>
+  
+  <nav class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20">
     <div class="flex items-center justify-between h-full">
-      <a href="/" class="text-lg sm:text-xl md:text-2xl font-bold">
-        <span class="bg-clip-text text-transparent bg-gradient-to-r from-violet-500 to-fuchsia-500">
-          Lambda Code Studio
-        </span>
+      <!-- Logo -->
+      <a href="/" class="group relative z-10">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+            <Code className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+          </div>
+          <span class="text-lg sm:text-xl md:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-violet-500 to-fuchsia-500 group-hover:from-fuchsia-500 group-hover:to-pink-500 transition-all duration-300">
+            Lambda Code Studio
+          </span>
+        </div>
       </a>
       
-      <div class="hidden md:flex items-center gap-4 lg:gap-8">
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center gap-2 lg:gap-4">
         <a 
           href="/proyectos" 
-          class="text-gray-300 hover:text-violet-400 transition-colors duration-300 relative group"
+          class={`relative px-4 py-2 rounded-lg text-gray-300 hover:text-white transition-all duration-300 group ${
+            pathname === '/proyectos' ? 'text-violet-400 bg-violet-500/10' : ''
+          }`}
         >
-          Proyectos
+          <span class="relative z-10">Proyectos</span>
           <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-violet-500 to-fuchsia-500 group-hover:w-full transition-all duration-300"></span>
+          {pathname === '/proyectos' && (
+            <div class="absolute inset-0 bg-gradient-to-r from-violet-500/20 to-fuchsia-500/20 rounded-lg"></div>
+          )}
         </a>
+        
         <a 
           href="/sobre-mi" 
-          class="text-gray-300 hover:text-violet-400 transition-colors duration-300 relative group"
+          class={`relative px-4 py-2 rounded-lg text-gray-300 hover:text-white transition-all duration-300 group ${
+            pathname === '/sobre-mi' ? 'text-violet-400 bg-violet-500/10' : ''
+          }`}
         >
-          Que somos
+          <span class="relative z-10">Sobre Nosotros</span>
           <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-violet-500 to-fuchsia-500 group-hover:w-full transition-all duration-300"></span>
+          {pathname === '/sobre-mi' && (
+            <div class="absolute inset-0 bg-gradient-to-r from-violet-500/20 to-fuchsia-500/20 rounded-lg"></div>
+          )}
         </a>
+        
+        <!-- CTA Button -->
         <a 
           href="/contacto" 
-          class="relative inline-flex group"
+          class={`relative ml-4 group ${
+            pathname === '/contacto' ? 'scale-105' : ''
+          }`}
         >
-          <div class="absolute -inset-0.5 bg-gradient-to-r from-violet-600 to-fuchsia-600 rounded-lg blur opacity-30 group-hover:opacity-100 transition duration-300"></div>
-          <span class="relative px-4 py-2 bg-black/50 backdrop-blur-sm rounded-lg text-gray-300 group-hover:text-white transition-colors duration-300">
-            Contactanos
-          </span>
+          <div class="absolute -inset-0.5 bg-gradient-to-r from-violet-600 to-fuchsia-600 rounded-xl blur opacity-30 group-hover:opacity-100 transition duration-300"></div>
+          <div class="relative px-6 py-2.5 bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-xl text-white font-medium hover:from-violet-600 hover:to-fuchsia-600 transition-all duration-300 flex items-center gap-2">
+            <MessageCircle className="w-4 h-4" />
+            <span>Contactanos</span>
+          </div>
         </a>
       </div>
 
+      <!-- Mobile Menu Button -->
       <button 
         id="mobile-menu-button"
-        class="md:hidden text-gray-300 hover:text-violet-400 transition-colors"
-        aria-label="Menu"
+        class="md:hidden relative z-10 p-2 text-gray-300 hover:text-violet-400 transition-colors duration-300 hover:bg-violet-500/10 rounded-lg"
+        aria-label="Abrir menú"
       >
-        <Menu class="w-6 h-6" />
+        <Menu class="w-6 h-6" id="menu-icon" />
+        <X class="w-6 h-6 hidden" id="close-icon" />
       </button>
     </div>
   </nav>
 
-  {/* Mobile Menu */}
+  <!-- Mobile Menu -->
   <div 
     id="mobile-menu" 
-    class="fixed inset-0 bg-black/98 backdrop-blur-2xl transform translate-x-full transition-transform duration-300 md:hidden z-50"
+    class="fixed inset-0 transform translate-x-full transition-transform duration-500 md:hidden z-40"
   >
-    <div class="absolute inset-0 bg-gradient-to-b from-violet-900/20 via-fuchsia-900/20 to-pink-900/20 opacity-50"></div>
+    <!-- Enhanced Glass Background -->
+    <div class="absolute inset-0 bg-black/70 backdrop-blur-3xl"></div>
+    
+    <!-- Gradient Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-br from-violet-900/30 via-fuchsia-900/20 to-pink-900/30"></div>
+    
+    <!-- Glass shine effect -->
+    <div class="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent"></div>
+    
+    <!-- Subtle grid pattern -->
+    <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px] opacity-40"></div>
     
     <div class="relative h-full flex flex-col">
-      <div class="flex justify-end p-4">
-        <button 
-          id="close-menu-button"
-          class="text-gray-300 hover:text-violet-400 transition-colors p-2"
-          aria-label="Cerrar menu"
-        >
-          <X class="w-6 h-6" />
-        </button>
+      <!-- Header Spacer -->
+      <div class="h-20"></div>
+      
+      <!-- Menu Content -->
+      <div class="flex-1 flex flex-col justify-center px-8">
+        <div class="space-y-8">
+          <!-- Logo in Mobile Menu -->
+          <div class="text-center mb-12">
+            <div class="inline-flex items-center gap-3">
+              <div class="w-12 h-12 bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-xl flex items-center justify-center">
+                <Code className="w-7 h-7 text-white" />
+              </div>
+              <span class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-violet-500 to-fuchsia-500">
+                Lambda Code Studio
+              </span>
+            </div>
+          </div>
+          
+          <!-- Navigation Links -->
+          <nav class="space-y-6">
+            <a 
+              href="/proyectos" 
+              class={`block text-center text-3xl font-medium transition-all duration-300 group ${
+                pathname === '/proyectos' 
+                  ? 'text-violet-400' 
+                  : 'text-gray-300 hover:text-violet-400'
+              }`}
+            >
+              <span class="relative">
+                Proyectos
+                <span class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-0 h-1 bg-gradient-to-r from-violet-500 to-fuchsia-500 group-hover:w-full transition-all duration-300 rounded-full"></span>
+              </span>
+            </a>
+            
+            <a 
+              href="/sobre-mi" 
+              class={`block text-center text-3xl font-medium transition-all duration-300 group ${
+                pathname === '/sobre-mi' 
+                  ? 'text-violet-400' 
+                  : 'text-gray-300 hover:text-violet-400'
+              }`}
+            >
+              <span class="relative">
+                Sobre Nosotros
+                <span class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-0 h-1 bg-gradient-to-r from-violet-500 to-fuchsia-500 group-hover:w-full transition-all duration-300 rounded-full"></span>
+              </span>
+            </a>
+            
+            <a 
+              href="/contacto" 
+              class="block text-center"
+            >
+              <div class="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-xl text-white font-medium text-xl hover:from-violet-600 hover:to-fuchsia-600 transition-all duration-300 hover:scale-105">
+                <MessageCircle className="w-6 h-6" />
+                <span>Contactanos</span>
+              </div>
+            </a>
+          </nav>
+        </div>
       </div>
       
-      <div class="flex flex-col items-center justify-center flex-grow gap-8 p-8">
-        <a 
-          href="/proyectos" 
-          class="relative text-2xl text-gray-300 hover:text-violet-400 transition-colors duration-300 group"
-        >
-          Proyectos
-          <span class="absolute -bottom-2 left-0 w-0 h-0.5 bg-gradient-to-r from-violet-500 to-fuchsia-500 group-hover:w-full transition-all duration-300"></span>
-        </a>
-        <a 
-          href="/sobre-mi" 
-          class="relative text-2xl text-gray-300 hover:text-violet-400 transition-colors duration-300 group"
-        >
-          Que somos
-          <span class="absolute -bottom-2 left-0 w-0 h-0.5 bg-gradient-to-r from-violet-500 to-fuchsia-500 group-hover:w-full transition-all duration-300"></span>
-        </a>
-        <a 
-          href="/contacto" 
-          class="relative text-2xl text-gray-300 hover:text-violet-400 transition-colors duration-300 group"
-        >
-          Contactanos
-          <span class="absolute -bottom-2 left-0 w-0 h-0.5 bg-gradient-to-r from-violet-500 to-fuchsia-500 group-hover:w-full transition-all duration-300"></span>
-        </a>
+      <!-- Footer in Mobile Menu -->
+      <div class="p-8 text-center border-t border-gray-800">
+        <p class="text-gray-400 mb-4">¿Listo para empezar tu proyecto?</p>
+        <div class="flex justify-center gap-4">
+          <a href="https://wa.me/5492227478196" class="text-gray-400 hover:text-green-400 transition-colors">
+            <MessageCircle className="w-6 h-6" />
+          </a>
+          <a href="mailto:lambdacodestudio@gmail.com" class="text-gray-400 hover:text-violet-400 transition-colors">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586l-8 8-8-8V4z"/>
+              <path d="M2 7.414V18a2 2 0 002 2h16a2 2 0 002-2V7.414l-8 8-8-8z"/>
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
   </div>
 </header>
 
 <script>
-  const mobileMenu = document.getElementById('mobile-menu');
-  const mobileMenuButton = document.getElementById('mobile-menu-button');
-  const closeMenuButton = document.getElementById('close-menu-button');
-
-  function toggleMenu() {
-    if (mobileMenu.classList.contains('translate-x-full')) {
-      // Open menu
-      mobileMenu.classList.remove('translate-x-full');
-      document.body.style.overflow = 'hidden';
+  // Header scroll effect with enhanced glassmorphism
+  function updateHeaderOnScroll() {
+    const header = document.getElementById('navbar');
+    const headerBg = header.querySelector('.absolute.inset-0');
+    const scrolled = window.scrollY > 50;
+    
+    if (scrolled) {
+      // Enhanced glass effect when scrolled
+      headerBg.style.background = 'rgba(0, 0, 0, 0.8)';
+      headerBg.style.backdropFilter = 'blur(24px) saturate(180%)';
+      headerBg.style.borderBottom = '1px solid rgba(255, 255, 255, 0.15)';
+      headerBg.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)';
     } else {
-      // Close menu
-      mobileMenu.classList.add('translate-x-full');
-      document.body.style.overflow = '';
+      // Subtle glass effect when at top
+      headerBg.style.background = 'rgba(0, 0, 0, 0.6)';
+      headerBg.style.backdropFilter = 'blur(20px) saturate(150%)';
+      headerBg.style.borderBottom = '1px solid rgba(255, 255, 255, 0.1)';
+      headerBg.style.boxShadow = '0 4px 24px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.05)';
     }
   }
 
-  mobileMenuButton.addEventListener('click', toggleMenu);
-  closeMenuButton.addEventListener('click', toggleMenu);
+  // Mobile menu functionality
+  function initMobileMenu() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const menuIcon = document.getElementById('menu-icon');
+    const closeIcon = document.getElementById('close-icon');
+    
+    let isMenuOpen = false;
 
-  // Close menu when clicking on a link
-  const mobileMenuLinks = mobileMenu.querySelectorAll('a');
-  mobileMenuLinks.forEach(link => {
-    link.addEventListener('click', toggleMenu);
-  });
-
-  // Close menu on window resize if it would show the desktop menu
-  window.addEventListener('resize', () => {
-    if (window.innerWidth >= 768 && !mobileMenu.classList.contains('translate-x-full')) {
-      toggleMenu();
+    function toggleMenu() {
+      isMenuOpen = !isMenuOpen;
+      
+      if (isMenuOpen) {
+        // Open menu
+        mobileMenu.classList.remove('translate-x-full');
+        menuIcon.classList.add('hidden');
+        closeIcon.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      } else {
+        // Close menu
+        mobileMenu.classList.add('translate-x-full');
+        menuIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
     }
+
+    // Event listeners
+    mobileMenuButton.addEventListener('click', toggleMenu);
+
+    // Close menu when clicking on a link
+    const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+    mobileMenuLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (isMenuOpen) toggleMenu();
+      });
+    });
+
+    // Close menu on window resize
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 768 && isMenuOpen) {
+        toggleMenu();
+      }
+    });
+
+    // Close menu on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && isMenuOpen) {
+        toggleMenu();
+      }
+    });
+  }
+
+  // Initialize on DOM load
+  document.addEventListener('DOMContentLoaded', () => {
+    initMobileMenu();
+    updateHeaderOnScroll();
+    
+    // Add scroll listener
+    window.addEventListener('scroll', updateHeaderOnScroll);
+    
+    // Add smooth transitions after load
+    setTimeout(() => {
+      document.getElementById('navbar').style.transition = 'all 0.3s ease';
+    }, 100);
   });
 </script>
+
+<style>
+  /* Enhanced Glassmorphism Effects */
+  #navbar {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  #navbar .absolute.inset-0 {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Glass reflection effect */
+  #navbar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    opacity: 0.6;
+  }
+
+  /* Mobile menu glass enhancement */
+  #mobile-menu {
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    backdrop-filter: blur(40px) saturate(180%);
+  }
+
+  #mobile-menu::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(circle at 20% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(244, 114, 182, 0.05) 0%, transparent 50%);
+    opacity: 0.8;
+  }
+
+  /* Prevent scroll when menu is open */
+  body.menu-open {
+    overflow: hidden;
+  }
+
+  /* Active page styles with glass effect */
+  .active-page {
+    color: rgb(139 92 246);
+    background: rgba(139, 92, 246, 0.1);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(139, 92, 246, 0.2);
+  }
+
+  /* Enhanced custom scrollbar */
+  #mobile-menu::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  #mobile-menu::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4px);
+  }
+
+  #mobile-menu::-webkit-scrollbar-thumb {
+    background: rgba(139, 92, 246, 0.4);
+    border-radius: 3px;
+    backdrop-filter: blur(2px);
+  }
+
+  #mobile-menu::-webkit-scrollbar-thumb:hover {
+    background: rgba(139, 92, 246, 0.6);
+  }
+
+  /* Glass button effects */
+  nav a, nav button {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  nav a:hover, nav button:hover {
+    backdrop-filter: blur(8px);
+    background: rgba(139, 92, 246, 0.1);
+    box-shadow: 0 4px 16px rgba(139, 92, 246, 0.2);
+  }
+</style>

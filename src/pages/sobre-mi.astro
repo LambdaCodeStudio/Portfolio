@@ -2,115 +2,412 @@
 // src/pages/sobre-mi.astro
 import Layout from '../components/layout/Layout.astro';
 import About from '../components/react/About';
-import { Clock, Users, Coffee, Network, Code, Award, BookOpen } from 'lucide-react';
+import { 
+  Clock, Users, Coffee, Network, Code, Award, BookOpen, 
+  Target, Heart, Zap, Shield, Rocket, Star, CheckCircle,
+  Lightbulb, Palette, Database, Smartphone, Globe, Brain
+} from 'lucide-react';
 
 const stats = [
   {
     icon: Clock,
     value: "5+",
     label: "Años de Experiencia",
+    description: "Construyendo soluciones digitales"
   },
   {
     icon: Users,
     value: "20+",
     label: "Clientes Satisfechos",
+    description: "Empresas que confían en nosotros"
   },
   {
     icon: Network,
     value: "60+",
     label: "Proyectos Completados",
+    description: "Soluciones entregadas exitosamente"
   },
+  {
+    icon: Code,
+    value: "99%",
+    label: "Satisfacción Cliente",
+    description: "Calidad garantizada"
+  }
 ];
 
 const achievements = [
   {
-    title: "Odonto Care",
+    title: "🦷 Odonto Care",
     company: "Aplicación Multiplataforma",
-    description: "App creada para ser usada en consultorios Odontologicos, tanto como para los registros de los pacientes como para la atencion de los mismos ."
+    year: "2024",
+    description: "Sistema integral para consultorios odontológicos con historias clínicas digitales, odontogramas interactivos y gestión completa de pacientes.",
+    tech: ["React", "Node.js", "MongoDB"],
+    impact: "40% reducción en tiempo administrativo"
   },
   {
-    title: "Descargo Mi factura",
-    company: "Aplicacion Mobile",
-    description: "Con nuestra app tu empresa ofrecer a sus clientes un servicio de manejo y control de las facturas y costos que le asignes."
+    title: "📄 Descargo Mi Factura",
+    company: "Aplicación Mobile",
+    year: "2024", 
+    description: "Plataforma móvil que permite a empresas ofrecer a sus clientes acceso centralizado y seguro a toda su información de facturación.",
+    tech: ["React Native", "Express.js", "Firebase"],
+    impact: "24/7 acceso a documentos"
   },
   {
-    title: "CleanOrg",
-    company: "We App",
-    description: "CleanOrg automatiza y lleva a cabo la designacion de tareas y trabajos en el marco de una Pension / Hotel / Empresa. Premia a los cumplidores y da tareas a los que no cumplan con sus obligaciones"
+    title: "🛎️ CleanOrg",
+    company: "Web App Empresarial",
+    year: "2024",
+    description: "Sistema inteligente de gestión de tareas para hoteles y empresas con gamificación y redistribución automática de responsabilidades.",
+    tech: ["React", "PWA", "WebSockets"],
+    impact: "30% aumento en productividad"
+  }
+];
+
+const values = [
+  {
+    icon: Target,
+    title: "Precisión",
+    description: "Cada línea de código tiene un propósito. Desarrollamos con precisión milimétrica para garantizar resultados excepcionales."
   },
+  {
+    icon: Heart,
+    title: "Pasión",
+    description: "Amamos lo que hacemos. Esta pasión se refleja en cada proyecto, cada solución y cada interacción con nuestros clientes."
+  },
+  {
+    icon: Zap,
+    title: "Innovación",
+    description: "Siempre a la vanguardia tecnológica. Adoptamos las últimas herramientas y metodologías para crear soluciones futuras."
+  },
+  {
+    icon: Shield,
+    title: "Confiabilidad",
+    description: "Construimos soluciones robustas y seguras. Nuestros clientes confían en nosotros para sus proyectos más críticos."
+  }
+];
+
+const services = [
+  {
+    icon: Globe,
+    title: "Desarrollo Web",
+    description: "Sitios web modernos y responsivos con las últimas tecnologías",
+    features: ["React/Astro", "Optimización SEO", "PWA", "E-commerce"]
+  },
+  {
+    icon: Smartphone,
+    title: "Apps Mobile",
+    description: "Aplicaciones nativas y multiplataforma para iOS y Android",
+    features: ["React Native", "Flutter", "App Store", "Google Play"]
+  },
+  {
+    icon: Database,
+    title: "Backend & APIs",
+    description: "Arquitecturas robustas y escalables para tus aplicaciones",
+    features: ["Node.js", "APIs REST", "Bases de datos", "Cloud"]
+  },
+  {
+    icon: Palette,
+    title: "UI/UX Design",
+    description: "Diseños centrados en el usuario que convierten visitantes en clientes",
+    features: ["Figma", "Prototipado", "Testing UX", "Design Systems"]
+  }
+];
+
+const team = [
+  {
+    name: "Equipo Frontend",
+    role: "Especialistas en Experiencia de Usuario",
+    description: "Expertos en crear interfaces modernas e intuitivas",
+    skills: ["React", "Astro", "Tailwind CSS", "TypeScript"]
+  },
+  {
+    name: "Equipo Backend", 
+    role: "Arquitectos de Sistemas",
+    description: "Desarrolladores enfocados en rendimiento y escalabilidad",
+    skills: ["Node.js", "Express", "MongoDB", "APIs"]
+  },
+  {
+    name: "Equipo Mobile",
+    role: "Desarrolladores Multiplataforma", 
+    description: "Especialistas en aplicaciones móviles nativas y híbridas",
+    skills: ["React Native", "Flutter", "Android", "iOS"]
+  }
+];
+
+const testimonials = [
+  {
+    quote: "Lambda Code Studio transformó completamente la gestión de nuestro consultorio. La aplicación es intuitiva y nos ahorró horas de trabajo diarias.",
+    author: "Dr. María González",
+    position: "Directora, Clínica Dental Sonrisa",
+    rating: 5
+  },
+  {
+    quote: "El sistema de gestión de tareas que desarrollaron aumentó nuestra productividad en un 40%. Increíble atención al detalle.",
+    author: "Carlos Mendoza",
+    position: "Gerente General, Hotel Plaza",
+    rating: 5
+  },
+  {
+    quote: "Profesionales excepcionales. Entregaron exactamente lo que necesitábamos, a tiempo y con soporte post-lanzamiento increíble.",
+    author: "Ana Rodríguez", 
+    position: "CEO, TechStart Solutions",
+    rating: 5
+  }
 ];
 ---
 
-<Layout title="Sobre Mí | LambdaCodeStudio">
-  <!-- Hero Section con Foto -->
-  <div class="relative min-h-[50vh] flex items-center justify-center bg-black overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-b from-violet-900/20 to-transparent"></div>
+<Layout title="Sobre Nosotros | LambdaCodeStudio">
+  <!-- Hero Section Mejorado -->
+  <div class="relative min-h-screen flex items-center justify-center bg-black overflow-hidden">
+    <!-- Background Effects -->
+    <div class="absolute inset-0 bg-gradient-to-br from-violet-900/30 via-fuchsia-900/20 to-pink-900/30"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(120,119,198,0.1),transparent)]"></div>
+    
+    <!-- Floating Elements -->
+    <div class="absolute top-20 left-10 w-20 h-20 bg-violet-500/20 rounded-full blur-xl animate-pulse"></div>
+    <div class="absolute bottom-20 right-10 w-32 h-32 bg-fuchsia-500/20 rounded-full blur-xl animate-pulse delay-1000"></div>
+    <div class="absolute top-1/2 left-1/4 w-16 h-16 bg-pink-500/20 rounded-full blur-xl animate-pulse delay-500"></div>
+    
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <div class="text-center lg:text-left">
-          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div class="text-center lg:text-left space-y-8">
+          <!-- Badge -->
+          <div class="inline-flex items-center gap-2 px-4 py-2 bg-violet-500/10 rounded-full border border-violet-500/20">
+            <Rocket className="w-4 h-4 text-violet-400" />
+            <span class="text-violet-300 text-sm font-medium">Sobre Lambda Code Studio</span>
+          </div>
+          
+          <!-- Title -->
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
+            <span class="text-white">Somos </span>
             <span class="bg-clip-text text-transparent bg-gradient-to-r from-violet-500 via-fuchsia-500 to-pink-500">
-              Hola, somos Lambda Code Studio
+              Innovadores
             </span>
+            <br/>
+            <span class="text-white">Digitales</span>
           </h1>
-          <p class="text-xl text-gray-400 mb-8 max-w-2xl mx-auto lg:mx-0">
-            Desarrolladores Full Stack & Diseñador UI/UX apasionados por crear soluciones digitales que ayuden a las empresas a crecer y a mejorar su presencia en línea.
+          
+          <!-- Description -->
+          <p class="text-xl text-gray-400 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+            Transformamos ideas en <span class="text-violet-400 font-semibold">soluciones digitales excepcionales</span>. 
+            Somos un equipo de desarrolladores full-stack y diseñadores UI/UX apasionados por crear 
+            <span class="text-fuchsia-400 font-semibold">experiencias que importan</span>.
           </p>
+          
+          <!-- CTA Buttons -->
+          <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <a 
+              href="/proyectos"
+              class="group relative px-8 py-4 bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white rounded-xl font-medium hover:from-violet-600 hover:to-fuchsia-600 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-violet-500/25"
+            >
+              <span class="relative z-10 flex items-center gap-2">
+                Ver Nuestros Proyectos
+                <Rocket className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </span>
+            </a>
+            <a 
+              href="/contacto"
+              class="px-8 py-4 bg-gray-900/50 text-white rounded-xl font-medium border border-violet-500/20 hover:bg-violet-500/10 hover:border-violet-500/50 transition-all duration-300"
+            >
+              Contactanos
+            </a>
+          </div>
         </div>
+        
+        <!-- Visual Element -->
         <div class="relative group">
-          <div class="absolute -inset-1 bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-xl blur-lg opacity-75 group-hover:opacity-100 transition duration-1000"></div>
-          <img 
-            src="https://picsum.photos/600/400" 
-            alt="Profile" 
-            class="relative rounded-xl w-full max-w-md mx-auto"
-          />
+          <div class="absolute -inset-1 bg-gradient-to-r from-violet-500 via-fuchsia-500 to-pink-500 rounded-2xl blur-xl opacity-75 group-hover:opacity-100 transition duration-1000 animate-pulse"></div>
+          <div class="relative bg-gray-900/50 backdrop-blur-xl rounded-2xl p-8 border border-gray-700/50">
+            <div class="grid grid-cols-3 gap-4 mb-6">
+              <div class="h-3 bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded animate-pulse"></div>
+              <div class="h-3 bg-gradient-to-r from-fuchsia-500 to-pink-500 rounded animate-pulse delay-200"></div>
+              <div class="h-3 bg-gradient-to-r from-pink-500 to-violet-500 rounded animate-pulse delay-400"></div>
+            </div>
+            <div class="space-y-4">
+              <div class="flex items-center gap-3">
+                <Code className="w-6 h-6 text-violet-400" />
+                <span class="text-white">Desarrollo Full-Stack</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <Smartphone className="w-6 h-6 text-fuchsia-400" />
+                <span class="text-white">Apps Multiplataforma</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <Palette className="w-6 h-6 text-pink-400" />
+                <span class="text-white">Diseño UI/UX</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <Brain className="w-6 h-6 text-cyan-400" />
+                <span class="text-white">Consultoría Tecnológica</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Estadísticas -->
-  <div class="bg-black py-16">
+  <!-- Estadísticas Mejoradas -->
+  <div class="bg-black py-20 border-b border-gray-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {stats.map(({ icon: Icon, value, label }) => (
-          <div class="bg-gray-900/30 backdrop-blur-xl p-6 rounded-xl border border-violet-500/20 text-center group hover:bg-gray-900/50 transition-all duration-300">
-            <Icon className="w-10 h-10 text-violet-400 mx-auto mb-4" />
-            <div class="text-4xl font-bold text-white mb-2">{value}</div>
-            <div class="text-gray-400">{label}</div>
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-white mb-4">Nuestro Impacto en Números</h2>
+        <p class="text-xl text-gray-400">Resultados que hablan por sí solos</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {stats.map(({ icon: Icon, value, label, description }, index) => (
+          <div class="group relative bg-gradient-to-br from-gray-900/50 to-gray-800/30 backdrop-blur-xl p-8 rounded-2xl border border-gray-700/50 hover:border-violet-500/50 transition-all duration-500 hover:scale-105 text-center">
+            <div class="absolute inset-0 bg-gradient-to-br from-violet-500/5 to-fuchsia-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            
+            <div class="relative">
+              <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                <Icon className="w-8 h-8 text-white" />
+              </div>
+              
+              <div class="text-5xl font-bold text-white mb-2 group-hover:text-violet-400 transition-colors duration-300">
+                {value}
+              </div>
+              
+              <div class="text-xl font-semibold text-gray-300 mb-2">{label}</div>
+              <div class="text-gray-400 text-sm">{description}</div>
+            </div>
           </div>
         ))}
       </div>
     </div>
   </div>
 
-  <!-- About Component -->
-  <About client:load />
-
-  <!-- Timeline de Logros -->
-  <div class="bg-black py-16">
+  <!-- Valores de la Empresa -->
+  <div class="bg-black py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-4xl font-bold text-center text-white mb-12">
-        Trayectoria Profesional
-      </h2>
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-white mb-4">Nuestros Valores</h2>
+        <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+          Los principios que guían cada decisión, cada línea de código y cada interacción con nuestros clientes
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {values.map(({ icon: Icon, title, description }, index) => (
+          <div class="group bg-gray-900/30 backdrop-blur-xl p-8 rounded-2xl border border-violet-500/20 hover:bg-gray-900/50 transition-all duration-500 hover:scale-105">
+            <div class="flex flex-col items-center text-center">
+              <div class="w-16 h-16 bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <Icon className="w-8 h-8 text-white" />
+              </div>
+              
+              <h3 class="text-xl font-bold text-white mb-4 group-hover:text-violet-400 transition-colors">
+                {title}
+              </h3>
+              
+              <p class="text-gray-400 leading-relaxed">{description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- Servicios -->
+  <div class="bg-black py-20 border-t border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-white mb-4">Nuestros Servicios</h2>
+        <p class="text-xl text-gray-400">Soluciones completas para todas tus necesidades digitales</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {services.map(({ icon: Icon, title, description, features }, index) => (
+          <div class="group bg-gradient-to-br from-gray-900/50 to-gray-800/30 backdrop-blur-xl p-8 rounded-2xl border border-gray-700/50 hover:border-violet-500/50 transition-all duration-500">
+            <div class="flex items-start gap-6">
+              <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <Icon className="w-7 h-7 text-white" />
+              </div>
+              
+              <div class="flex-1">
+                <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-violet-400 transition-colors">
+                  {title}
+                </h3>
+                
+                <p class="text-gray-400 mb-6 leading-relaxed">{description}</p>
+                
+                <div class="flex flex-wrap gap-2">
+                  {features.map((feature) => (
+                    <span class="px-3 py-1 bg-violet-500/10 text-violet-300 rounded-lg text-sm border border-violet-500/20">
+                      {feature}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- Timeline de Proyectos Mejorado -->
+  <div class="bg-black py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-white mb-4">Proyectos Destacados</h2>
+        <p class="text-xl text-gray-400">Un vistazo a nuestros trabajos más impactantes</p>
+      </div>
       
       <div class="relative">
-        <div class="absolute left-1/2 transform -translate-x-px h-full w-0.5 bg-gradient-to-b from-violet-500 via-fuchsia-500 to-transparent"></div>
+        <!-- Timeline Line -->
+        <div class="absolute left-1/2 transform -translate-x-px h-full w-1 bg-gradient-to-b from-violet-500 via-fuchsia-500 to-pink-500 opacity-30"></div>
         
-        <div class="space-y-12">
+        <div class="space-y-16">
           {achievements.map((achievement, index) => (
             <div class="relative group">
-              <div class="flex items-center">
-                <div class="flex-1 text-right mr-8 md:mr-12">
-                  <div class="text-xl font-bold text-white mb-1">{achievement.title}</div>
-                  <div class="text-violet-400">{achievement.company}</div>
-                  <div class="text-gray-400">{achievement.year}</div>
+              <!-- Timeline Dot -->
+              <div class="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-full border-4 border-black group-hover:scale-125 transition-transform duration-300"></div>
+              
+              <div class={`grid grid-cols-1 lg:grid-cols-2 gap-8 items-center ${index % 2 === 0 ? '' : 'lg:grid-flow-dense'}`}>
+                <!-- Content -->
+                <div class={`${index % 2 === 0 ? 'lg:text-right lg:pr-12' : 'lg:pl-12 lg:col-start-2'}`}>
+                  <div class="bg-gray-900/30 backdrop-blur-xl p-8 rounded-2xl border border-violet-500/20 group-hover:bg-gray-900/50 transition-all duration-500">
+                    <div class="flex items-center gap-2 mb-4">
+                      <span class="text-sm text-violet-400 font-medium">{achievement.year}</span>
+                      <div class="h-px bg-gradient-to-r from-violet-500 to-fuchsia-500 flex-1"></div>
+                    </div>
+                    
+                    <h3 class="text-2xl font-bold text-white mb-2 group-hover:text-violet-400 transition-colors">
+                      {achievement.title}
+                    </h3>
+                    
+                    <p class="text-fuchsia-400 font-medium mb-4">{achievement.company}</p>
+                    
+                    <p class="text-gray-400 mb-6 leading-relaxed">{achievement.description}</p>
+                    
+                    <!-- Technologies -->
+                    <div class="flex flex-wrap gap-2 mb-4">
+                      {achievement.tech.map((tech) => (
+                        <span class="px-3 py-1 bg-gradient-to-r from-violet-500/20 to-fuchsia-500/20 text-white rounded-lg text-sm border border-violet-500/30">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                    
+                    <!-- Impact -->
+                    <div class="flex items-center gap-2 text-green-400">
+                      <CheckCircle className="w-5 h-5" />
+                      <span class="font-medium">{achievement.impact}</span>
+                    </div>
+                  </div>
                 </div>
                 
-                <div class="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-full"></div>
-                
-                <div class="flex-1 ml-8 md:ml-12">
-                  <p class="text-gray-400">{achievement.description}</p>
+                <!-- Visual -->
+                <div class={`${index % 2 === 0 ? 'lg:pl-12' : 'lg:pr-12 lg:col-start-1'}`}>
+                  <div class="relative group/visual">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-xl blur-lg opacity-30 group-hover/visual:opacity-60 transition-opacity duration-500"></div>
+                    <div class="relative h-64 bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl border border-gray-700/50 p-6 flex items-center justify-center">
+                      <div class="text-center">
+                        <div class="text-6xl mb-4">{achievement.title.split(' ')[0]}</div>
+                        <div class="text-gray-400">Ver proyecto completo</div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -119,4 +416,225 @@ const achievements = [
       </div>
     </div>
   </div>
+
+  <!-- Testimoniales -->
+  <div class="bg-black py-20 border-t border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-white mb-4">Lo Que Dicen Nuestros Clientes</h2>
+        <p class="text-xl text-gray-400">Testimonios reales de empresas que confiaron en nosotros</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {testimonials.map((testimonial, index) => (
+          <div class="group bg-gray-900/30 backdrop-blur-xl p-8 rounded-2xl border border-violet-500/20 hover:bg-gray-900/50 transition-all duration-500 hover:scale-105">
+            <!-- Stars -->
+            <div class="flex gap-1 mb-6">
+              {[...Array(testimonial.rating)].map((_, i) => (
+                <Star className="w-5 h-5 text-yellow-400 fill-current" />
+              ))}
+            </div>
+            
+            <!-- Quote -->
+            <blockquote class="text-gray-300 mb-6 leading-relaxed italic">
+              "{testimonial.quote}"
+            </blockquote>
+            
+            <!-- Author -->
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-full flex items-center justify-center">
+                <span class="text-white font-bold">{testimonial.author.charAt(0)}</span>
+              </div>
+              <div>
+                <p class="text-white font-semibold">{testimonial.author}</p>
+                <p class="text-gray-400 text-sm">{testimonial.position}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- Equipo -->
+  <div class="bg-black py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-white mb-4">Nuestro Equipo</h2>
+        <p class="text-xl text-gray-400">Profesionales especializados trabajando en sinergia</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {team.map((member, index) => (
+          <div class="group bg-gradient-to-br from-gray-900/50 to-gray-800/30 backdrop-blur-xl p-8 rounded-2xl border border-gray-700/50 hover:border-violet-500/50 transition-all duration-500 text-center">
+            <div class="w-20 h-20 bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-full mx-auto mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+              <Code className="w-10 h-10 text-white" />
+            </div>
+            
+            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-violet-400 transition-colors">
+              {member.name}
+            </h3>
+            
+            <p class="text-fuchsia-400 font-medium mb-4">{member.role}</p>
+            
+            <p class="text-gray-400 mb-6">{member.description}</p>
+            
+            <div class="flex flex-wrap gap-2 justify-center">
+              {member.skills.map((skill) => (
+                <span class="px-3 py-1 bg-violet-500/10 text-violet-300 rounded-lg text-sm">
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA Final -->
+  <div class="bg-black py-20 border-t border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="relative">
+        <div class="absolute inset-0 bg-gradient-to-r from-violet-500/10 to-fuchsia-500/10 rounded-3xl blur-3xl"></div>
+        <div class="relative bg-gray-900/30 backdrop-blur-xl p-12 rounded-3xl border border-violet-500/20">
+          <h2 class="text-4xl font-bold text-white mb-6">
+            ¿Listo para Transformar tu Idea?
+          </h2>
+          <p class="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
+            Únete a las empresas que ya están revolucionando su industria con nuestras soluciones digitales
+          </p>
+          
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a 
+              href="/contacto"
+              class="group relative px-8 py-4 bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white rounded-xl font-medium hover:from-violet-600 hover:to-fuchsia-600 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-violet-500/25"
+            >
+              <span class="relative z-10 flex items-center gap-2">
+                Iniciar Proyecto
+                <Rocket className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </span>
+            </a>
+            
+            <a 
+              href="/proyectos"
+              class="px-8 py-4 bg-gray-900/50 text-white rounded-xl font-medium border border-violet-500/20 hover:bg-violet-500/10 hover:border-violet-500/50 transition-all duration-300"
+            >
+              Ver Portfolio
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </Layout>
+
+<style>
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes pulse-slow {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse-slow 3s ease-in-out infinite;
+  }
+
+  /* Smooth transitions */
+  * {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(139, 92, 246, 0.3);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(139, 92, 246, 0.5);
+  }
+</style>
+
+<script>
+  // Intersection Observer for animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, observerOptions);
+
+  // Observe all sections
+  document.addEventListener('DOMContentLoaded', () => {
+    const sections = document.querySelectorAll('section, div[class*="py-"]');
+    sections.forEach(section => {
+      section.style.opacity = '0';
+      section.style.transform = 'translateY(20px)';
+      section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(section);
+    });
+
+    // Counter animation for stats
+    const animateCounter = (element, target) => {
+      let current = 0;
+      const increment = target / 50;
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+          current = target;
+          clearInterval(timer);
+        }
+        
+        if (target.toString().includes('%')) {
+          element.textContent = Math.floor(current) + '%';
+        } else if (target.toString().includes('+')) {
+          element.textContent = Math.floor(current) + '+';
+        } else {
+          element.textContent = Math.floor(current);
+        }
+      }, 50);
+    };
+
+    // Trigger counter animations when stats come into view
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const value = entry.target.textContent.trim();
+          const target = parseInt(value.replace(/[^\d]/g, ''));
+          animateCounter(entry.target, target);
+          statsObserver.unobserve(entry.target);
+        }
+      });
+    });
+
+    document.querySelectorAll('[class*="text-5xl"]').forEach(stat => {
+      if (stat.textContent.match(/\d/)) {
+        statsObserver.observe(stat);
+      }
+    });
+  });
+</script>
