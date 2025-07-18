@@ -56,7 +56,39 @@ const Projects = () => {
       demo: "#",
       playStore: "#",
       featured: true
-    }
+    },
+     {
+    id: 6,
+    title: "Portfolio • Lambda Code Studio",
+    shortDescription: "Sitio web open‑source del estudio, mostrando proyectos y contacto",
+    description: "Portfolio open‑source creado con Astro, React y Tailwind; incluye galería de proyectos, sección de contacto y estadísticas.",
+    tags: ["Astro", "React", "Tailwind", "TypeScript"],
+    image: "https://picsum.photos/600/400?random=6",
+    gradient: "from-indigo-500 to-blue-500",
+    category: "Web / Portfolio",
+    status: "Open Source",
+    impact: "40+ visitas semanales",
+    clients: "Lambda Code Studio",
+    github: "https://github.com/LambdaCodeStudio/Portfolio",
+    demo: "https://lambdacodestudio.com.ar",
+    featured: true
+  },
+  {
+    id: 7,
+    title: "Convertidor de Audio",
+    shortDescription: "Convertidor web open‑source para audio/vídeo con FFmpeg WASM",
+    description: "Aplicación ligera que usa FFmpeg compilado a WebAssembly para convertir archivos de audio y video (máx 2 GB) directamente en el navegador.",
+    tags: ["WebAssembly", "FFmpeg", "React", "TypeScript"],
+    image: "https://picsum.photos/600/400?random=7",
+    gradient: "from-purple-600 to-indigo-600",
+    category: "Web / Utilidad",
+    status: "Open Source",
+    impact: "Convierte hasta 2 GB localmente",
+    clients: "Público Open Source",
+    github: "https://github.com/LambdaCodeStudio/convertidor-de-audio",
+    demo: "https://convertidor-de-audio.vercel.app/",
+    featured: false
+  }
   ];
 
   const stats = [

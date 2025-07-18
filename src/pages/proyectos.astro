@@ -17,7 +17,7 @@ const allProjects = [
     La plataforma permite llevar historias clínicas digitales completas, con odontogramas interactivos, sistema de recordatorios automatizados, gestión de citas, control de pagos y prestaciones, y generación de reportes detallados. Todo esto respaldado por un sistema de seguridad robusto que cumple con estándares médicos de privacidad.`,
     tags: ["React", "Node.js", "Express.js", "MongoDB", "JWT", "Socket.io", "Material-UI"],
     technologies: {
-      frontend: ["React 18", "Material-UI", "Chart.js", "Socket.io Client"],
+      frontend: ["React 18", "Material-UI", "Chart.js", "Socket.io Client", "Astro", "Tailwind"],
       backend: ["Node.js", "Express.js", "MongoDB", "JWT", "Bcrypt"],
       tools: ["VS Code", "Postman", "Git", "Figma"]
     },
@@ -35,55 +35,90 @@ const allProjects = [
     gradient: "from-blue-500 to-cyan-500",
     category: "Web Apps",
     status: "Completado",
-    duration: "4 meses",
+    duration: "2 meses",
     client: "Consultorios Odontológicos",
     year: "2024",
-    github: "#",
-    demo: "#",
+    demo: "https://odontocare.lambdacodestudio.com.ar",
     testimonial: {
       text: "Odonto Care transformó completamente la gestión de nuestro consultorio. La digitalización de las historias clínicas nos ahorró horas de trabajo.",
       author: "Dr. María González",
       position: "Odontóloga"
     }
   },
-  {
-    id: 2,
-    title: "🛎️ CleanOrg",
-    shortDescription: "Sistema inteligente de gestión de tareas para hoteles y empresas",
-    fullDescription: `CleanOrg es una plataforma revolucionaria que automatiza la gestión de tareas en hoteles, pensiones y empresas de servicios. Utiliza algoritmos inteligentes para distribuir responsabilidades de manera equitativa, monitoreando el cumplimiento y optimizando la productividad del equipo.
+  // {
+  //   id: 2,
+  //   title: "🛎️ CleanOrg",
+  //   shortDescription: "Sistema inteligente de gestión de tareas para hoteles y empresas",
+  //   fullDescription: `CleanOrg es una plataforma revolucionaria que automatiza la gestión de tareas en hoteles, pensiones y empresas de servicios. Utiliza algoritmos inteligentes para distribuir responsabilidades de manera equitativa, monitoreando el cumplimiento y optimizando la productividad del equipo.
 
-    El sistema incorpora gamificación mediante un sistema de recompensas que motiva a los empleados, redistribuye automáticamente las tareas no completadas, y proporciona análisis detallados del rendimiento. Es la solución perfecta para establecimientos que buscan mejorar su eficiencia operativa.`,
-    tags: ["React", "Node.js", "Express.js", "MongoDB", "PWA", "Material-UI", "Chart.js"],
-    technologies: {
-      frontend: ["React 18", "Material-UI", "PWA", "Chart.js", "Framer Motion"],
-      backend: ["Node.js", "Express.js", "MongoDB", "JWT", "WebSockets"],
-      tools: ["Docker", "Git", "Jest", "Lighthouse"]
-    },
-    features: [
-      "Asignación automática inteligente de tareas",
-      "Sistema de recompensas y gamificación",
-      "Redistribución automática de responsabilidades",
-      "Dashboard de métricas en tiempo real",
-      "Notificaciones push personalizadas",
-      "Modo offline para trabajo sin conexión",
-      "Reportes de productividad detallados"
-    ],
-    image: "cleanOrg.png",
-    gallery: ["clean1.jpg", "clean2.jpg", "clean3.jpg"],
-    gradient: "from-green-500 to-emerald-500",
-    category: "Web Apps",
-    status: "En Producción",
-    duration: "3 meses",
-    client: "Hoteles y Empresas",
-    year: "2024",
-    github: "#",
-    demo: "#",
-    testimonial: {
-      text: "CleanOrg aumentó nuestra eficiencia operativa en un 40%. El sistema de recompensas motivó increíblemente a nuestro equipo.",
-      author: "Carlos Mendoza",
-      position: "Gerente de Hotel"
-    }
+  //   El sistema incorpora gamificación mediante un sistema de recompensas que motiva a los empleados, redistribuye automáticamente las tareas no completadas, y proporciona análisis detallados del rendimiento. Es la solución perfecta para establecimientos que buscan mejorar su eficiencia operativa.`,
+  //   tags: ["React", "Node.js", "Express.js", "MongoDB", "PWA", "Material-UI", "Chart.js"],
+  //   technologies: {
+  //     frontend: ["React 18", "Material-UI", "PWA", "Chart.js", "Framer Motion"],
+  //     backend: ["Node.js", "Express.js", "MongoDB", "JWT", "WebSockets"],
+  //     tools: ["Docker", "Git", "Jest", "Lighthouse"]
+  //   },
+  //   features: [
+  //     "Asignación automática inteligente de tareas",
+  //     "Sistema de recompensas y gamificación",
+  //     "Redistribución automática de responsabilidades",
+  //     "Dashboard de métricas en tiempo real",
+  //     "Notificaciones push personalizadas",
+  //     "Modo offline para trabajo sin conexión",
+  //     "Reportes de productividad detallados"
+  //   ],
+  //   image: "cleanOrg.png",
+  //   gallery: ["clean1.jpg", "clean2.jpg", "clean3.jpg"],
+  //   gradient: "from-green-500 to-emerald-500",
+  //   category: "Web Apps",
+  //   status: "En Producción",
+  //   duration: "3 meses",
+  //   client: "Hoteles y Empresas",
+  //   year: "2024",
+  //   github: "#",
+  //   demo: "#",
+  //   testimonial: {
+  //     text: "CleanOrg aumentó nuestra eficiencia operativa en un 40%. El sistema de recompensas motivó increíblemente a nuestro equipo.",
+  //     author: "Carlos Mendoza",
+  //     position: "Gerente de Hotel"
+  //   }
+  // },
+   {
+  "id": 2,
+  "title": "📄 DistriLink",
+  "shortDescription": "Plataforma de gestión simplificada de facturación y productos",
+  "fullDescription": "DistriLink es un sistema de administración integral diseñado para gestionar inventario, facturación y pedidos de forma eficiente. Desde el panel de administración, los usuarios pueden controlar productos, combos, stock, clientes, conductores y descargas de facturas. Además, con la tienda online incorporada, los clientes acceden a un catálogo categorizado (Limpieza, Mantenimiento), con filtros, favoritos y búsqueda avanzada en una interfaz moderna y responsiva.",
+  "tags": ["React", "Node.js", "Express.js", "MongoDB", "Firebase"],
+  "technologies": {
+    "frontend": ["React", "Redux", "React Router", "Tailwind CSS"],
+    "backend": ["Node.js", "Express.js", "MongoDB", "Firebase Auth"],
+    "tools": ["VSCode", "Postman"]
   },
+  "features": [
+    "Gestión de inventario (productos y combos)",
+    "Panel de administración con filtros de stock",
+    "Alta y edición de productos y combos",
+    "Gestión de usuarios, clientes y conductores",
+    "Control de pedidos y estado de stock",
+    "Descarga de facturas/documentación",
+    "Tienda online con búsqueda, filtros y favoritos",
+    "Interfaz responsiva y UX optimizada"
+  ],
+  "image": "distrilink_dashboard.png",
+  "gallery": ["dashboard_inventario.png", "dashboard_usuarios.png", "shop_front.png"],
+  "gradient": "from-blue-500 to-green-500",
+  "category": "Web / Admin & eCommerce",
+  "status": "Completado",
+  "duration": "3 meses",
+  "client": "Distribuidoras y mayoristas",
+  "year": "2025",
+  "demo": "https://distrilink.lambdacodestudio.com.ar",
+  "testimonial": {
+    "text": "Desde que implementamos DistriLink, logramos reducir el tiempo de gestión de inventario y facturación a la mitad. La tienda online también multiplicó nuestras ventas.",
+    "author": "María Gómez",
+    "position": "Gerente Operativo"
+  }
+},
   {
     id: 3,
     title: "📄 Descargo Mi Factura",
@@ -111,12 +146,9 @@ const allProjects = [
     gradient: "from-purple-500 to-pink-500",
     category: "Mobile",
     status: "Completado",
-    duration: "2.5 meses",
+    duration: "1 mes",
     client: "Empresas de Servicios",
     year: "2024",
-    github: "#",
-    demo: "#",
-    playStore: "#",
     testimonial: {
       text: "Nuestros clientes ahora pueden acceder a sus facturas 24/7. El feedback ha sido extraordinario.",
       author: "Ana Rodríguez",
@@ -186,9 +218,78 @@ const allProjects = [
     duration: "Desarrollo continuo",
     client: "Comunidad de Desarrolladores",
     year: "2023-2024",
-    github: "https://github.com/LambdaCodeStudio/Plantilla-Frontend",
-    demo: "#"
+    github: "https://github.com/LambdaCodeStudio/Plantilla-Frontend"
+  },
+  {
+  "id": 6,
+  "title": "Portfolio • Lambda Code Studio",
+  "shortDescription": "Sitio web open‑source del estudio, mostrando proyectos, servicios y contacto",
+  "fullDescription": "Este portfolio en línea presenta los servicios de Lambda Code Studio: desarrollo web, apps móviles, backend, UI/UX y DevOps. Incluye una galería de proyectos destacados, estadísticas de experiencia y una sección de contacto integrada. Es una solución limpia y moderna, ideal como carta de presentación digital para atraer clientes.",
+  "tags": ["React", "Node.js", "Astro", "TypeScript", "MongoDB"],
+  "technologies": {
+    "frontend": ["React", "Astro", "Tailwind CSS", "TypeScript"],
+    "backend": ["Node.js", "Express.js"],
+    "tools": ["Github Pages / Vercel", "VSCode", "Postman"]
+  },
+  "features": [
+    "Galería de proyectos destacados",
+    "Estadísticas de experiencia y clientes",
+    "Sección de contacto con formulario y WhatsApp",
+    "Navegación rápida (Inicio, Proyectos, Sobre mí, Contacto)",
+    "Diseño responsive y moderno",
+    "Código abierto en GitHub"
+  ],
+  "image": "portfolio_home.png",
+  "gallery": ["portfolio_projects.png", "portfolio_about.png", "portfolio_contact.png"],
+  "gradient": "from-indigo-500 to-blue-500",
+  "category": "Web / Portfolio",
+  "status": "Open Source",
+  "duration": "2 semanas",
+  "client": "Lambda Code Studio (interno)",
+  "year": "2025",
+  "github": "https://github.com/LambdaCodeStudio/Portfolio",
+  "demo": "https://lambdacodestudio.com.ar",
+  "testimonial": {
+    "text": "Nuestro sitio destacado open-source nos permitió compartir transparencia y ganar confianza ante potenciales clientes.",
+    "author": "Equipo Lambda Code Studio",
+    "position": "Fundadores"
   }
+},
+{
+  "id": 7,
+  "title": "🔊 Convertidor de Audio",
+  "shortDescription": "Herramienta web open‑source para convertir archivos de audio/vídeo a múltiples formatos",
+  "fullDescription": "Convertidor de Audio es una aplicación web ligera impulsada por FFmpeg compilado a WebAssembly. Permite a los usuarios subir archivos (hasta 2 GB) y convertirlos entre formatos populares como MP3, WAV, AAC, FLAC, entre otros, todo directamente en el navegador sin necesidad de servidores adicionales.",
+  "tags": ["WebAssembly", "FFmpeg", "React", "TypeScript"],
+  "technologies": {
+    "frontend": ["React", "Tailwind CSS", "WebAssembly"],
+    "backend": ["— (todo corre en el cliente)"],
+    "tools": ["FFmpeg.wasm", "Vercel"]
+  },
+  "features": [
+    "Conversión local de audio/vídeo (hasta 2 GB)",
+    "Soporte para múltiples formatos: MP3, WAV, AAC, FLAC, OGG, entre otros",
+    "Selección de tipo de codificación: CBR, ABR, VBR",
+    "Funciona completamente offline y sin uso de backend"
+  ],
+  "image": "converter_home.png",
+  "gallery": ["converter_formats.png", "converter_progress.png", "converter_settings.png"],
+  "gradient": "from-purple-600 to-indigo-600",
+  "category": "Web / Utilidad",
+  "status": "Completado",
+  "duration": "1 semana",
+  "client": "Open‑source / Público",
+  "year": "2025",
+  "github": "https://github.com/LambdaCodeStudio/convertidor-de-audio",
+  "demo": "https://convertidor-de-audio.vercel.app/",
+  "testimonial": {
+    "text": "Herramienta simple y efectiva para convertir audios sin necesidad de instalaciones ni backend.",
+    "author": "Usuario Open‑Source",
+    "position": "Desarrollador Web"
+  }
+}
+
+
 ];
 ---
 
@@ -219,15 +320,15 @@ const allProjects = [
       <div class="flex items-center justify-center gap-8 text-gray-400">
         <div class="flex items-center gap-2">
           <Code className="w-5 h-5 text-violet-400" />
-          <span>5+ Proyectos</span>
+          <span>6 Proyectos</span>
         </div>
         <div class="flex items-center gap-2">
           <Users className="w-5 h-5 text-fuchsia-400" />
-          <span>20+ Clientes</span>
+          <span>4 Clientes</span>
         </div>
         <div class="flex items-center gap-2">
           <Star className="w-5 h-5 text-pink-400" />
-          <span>99% Satisfacción</span>
+          <span>Satisfacción más que seguro</span>
         </div>
       </div>
     </div>
@@ -327,15 +428,6 @@ const allProjects = [
               {/* Acciones */}
               <div class="flex items-center justify-between">
                 <div class="flex gap-3">
-                  {project.github && (
-                    <a 
-                      href={project.github} 
-                      class="p-3 rounded-xl bg-gray-800/50 text-gray-400 hover:text-white hover:bg-gray-700/50 transition-all duration-300 hover:scale-110"
-                      title="Ver código"
-                    >
-                      <Github className="w-5 h-5" />
-                    </a>
-                  )}
                   {project.demo && (
                     <a 
                       href={project.demo} 

@@ -8,7 +8,7 @@ const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [currentTech, setCurrentTech] = useState(0);
 
-  const technologies = ['React', 'Node.js', 'React Native', 'MongoDB', 'TypeScript'];
+  const technologies = ['React', 'Node.js', 'React Native', 'MongoDB', 'TypeScript', "Astro"];
   const achievements = [
     { number: '20+', label: 'Proyectos Exitosos' },
     { number: '99%', label: 'Satisfacción Cliente' },
