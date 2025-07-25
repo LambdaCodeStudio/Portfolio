@@ -1,8 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { 
-  ArrowRight, Rocket, Star, Code, Zap, Users, Award, 
-  Play, CheckCircle, Sparkles, MessageCircle 
+import {
+  ArrowRight,
+  Rocket,
+  Star,
+  Code,
+  Zap,
+  Users,
+  Award,
+  Play,
+  CheckCircle,
+  Sparkles,
+  MessageCircle,
 } from 'lucide-react';
+import StatsItem from './StatsItem';
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -78,14 +88,11 @@ const Hero = () => {
           </div>
 
           {/* Stats */}
-          <div className={`grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div
+            className={`grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+          >
             {achievements.map((achievement, index) => (
-              <div key={index} className="group">
-                <div className="text-3xl sm:text-4xl font-bold text-white mb-2 group-hover:text-violet-400 transition-colors duration-300">
-                  {achievement.number}
-                </div>
-                <div className="text-gray-400 text-sm sm:text-base">{achievement.label}</div>
-              </div>
+              <StatsItem key={index} number={achievement.number} label={achievement.label} />
             ))}
           </div>
 
