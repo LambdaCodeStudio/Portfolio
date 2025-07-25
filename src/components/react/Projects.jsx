@@ -146,8 +146,8 @@ const Projects = () => {
 
         {/* Stats Section */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20">
-          {stats.map(({ icon: Icon, value, label }, index) => (
-            <div key={index} className="text-center group">
+          {stats.map(({ icon: Icon, value, label }) => (
+            <div key={label} className="text-center group">
               <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-violet-500/20 to-fuchsia-500/20 rounded-xl flex items-center justify-center group-hover:from-violet-500/30 group-hover:to-fuchsia-500/30 transition-all duration-300">
                 <Icon className="w-8 h-8 text-violet-400" />
               </div>
@@ -226,9 +226,9 @@ const Projects = () => {
                 
                 {/* Technologies */}
                 <div className="flex flex-wrap gap-2 mb-6">
-                  {project.tags.slice(0, 3).map((tag, tagIndex) => (
-                    <span 
-                      key={tagIndex}
+                  {project.tags.slice(0, 3).map((tag) => (
+                    <span
+                      key={`${project.id}-${tag}`}
                       className={`px-3 py-1 rounded-lg text-xs bg-gradient-to-r ${project.gradient} text-white font-medium opacity-90`}
                     >
                       {tag}

@@ -1,6 +1,28 @@
 import React from 'react';
 import { Code, Briefcase, GraduationCap } from 'lucide-react';
 
+const features = [
+  {
+    icon: Code,
+    gradient: 'from-violet-500 to-fuchsia-500',
+    title: 'Experiencia Técnica',
+    description: 'Nos especializamos en las últimas tecnologías web y nativas.'
+  },
+  {
+    icon: Briefcase,
+    gradient: 'from-fuchsia-500 to-pink-500',
+    title: 'Experiencia Laboral',
+    description:
+      'Nuestra amplia cartilla de clientes nos abala el trabajo relizado a lo largo de estos años.'
+  },
+  {
+    icon: GraduationCap,
+    gradient: 'from-pink-500 to-rose-500',
+    title: 'Educación',
+    description: 'Formados universitariamente aptos para el mercado laboral.'
+  }
+];
+
 const About = () => {
   return (
     <div className="bg-black py-20 relative">
@@ -25,35 +47,23 @@ const About = () => {
           </div>
 
           <div className="space-y-6">
-            <div className="bg-gray-900/30 backdrop-blur-xl p-6 rounded-xl border border-violet-500/20 group hover:bg-gray-900/50 transition-all duration-300">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="p-3 rounded-lg bg-gradient-to-r from-violet-500 to-fuchsia-500">
-                  <Code className="w-6 h-6 text-white" />
+            {features.map((feature) => {
+              const Icon = feature.icon;
+              return (
+                <div
+                  key={feature.title}
+                  className="bg-gray-900/30 backdrop-blur-xl p-6 rounded-xl border border-violet-500/20 group hover:bg-gray-900/50 transition-all duration-300"
+                >
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className={`p-3 rounded-lg bg-gradient-to-r ${feature.gradient}`}>
+                      <Icon className="w-6 h-6 text-white" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-white">{feature.title}</h3>
+                  </div>
+                  <p className="text-gray-400">{feature.description}</p>
                 </div>
-                <h3 className="text-xl font-semibold text-white">Experiencia Técnica</h3>
-              </div>
-              <p className="text-gray-400">Nos especializamos en las últimas tecnologías web y nativas.</p>
-            </div>
-
-            <div className="bg-gray-900/30 backdrop-blur-xl p-6 rounded-xl border border-violet-500/20 group hover:bg-gray-900/50 transition-all duration-300">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="p-3 rounded-lg bg-gradient-to-r from-fuchsia-500 to-pink-500">
-                  <Briefcase className="w-6 h-6 text-white" />
-                </div>
-                <h3 className="text-xl font-semibold text-white">Experiencia Laboral</h3>
-              </div>
-              <p className="text-gray-400">Nuestra amplia cartilla de clientes nos abala el trabajo relizado a lo largo de estos años.</p>
-            </div>
-
-            <div className="bg-gray-900/30 backdrop-blur-xl p-6 rounded-xl border border-violet-500/20 group hover:bg-gray-900/50 transition-all duration-300">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="p-3 rounded-lg bg-gradient-to-r from-pink-500 to-rose-500">
-                  <GraduationCap className="w-6 h-6 text-white" />
-                </div>
-                <h3 className="text-xl font-semibold text-white">Educación</h3>
-              </div>
-              <p className="text-gray-400">Formados universitariamente aptos para el mercado laboral.</p>
-            </div>
+              );
+            })}
           </div>
         </div>
       </div>
