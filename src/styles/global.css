@@ -30,13 +30,14 @@
 
   /* Transiciones suaves para todos los elementos */
   * {
-    transition-property: background-color, border-color, color, fill, stroke;
+    transition-property: background-color, border-color, fill, stroke;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 0.4s;
   }
 
   /* Transiciones más rápidas para elementos interactivos */
   button, a, input, textarea, select {
+    transition-property: background-color, border-color, color, fill, stroke;
     transition-duration: 0.2s;
   }
 
