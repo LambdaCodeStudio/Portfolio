@@ -20,12 +20,12 @@ if (!project) {
   title={`${project.title} - Tu Nombre`}
   description={project.shortDescription}
 >
-  <article class="py-16">
+  <article class="py-16 bg-white dark:bg-neutral-900">
     <!-- Back Button -->
     <div class="container-custom mb-8">
       <a
         href="/#proyectos"
-        class="inline-flex items-center text-sm font-medium text-neutral-600 hover:text-neutral-900 transition-colors"
+        class="inline-flex items-center text-sm font-medium text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
       >
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
@@ -39,17 +39,17 @@ if (!project) {
       <div class="max-w-4xl">
         <div class="flex flex-wrap items-center gap-3 mb-4">
           <span class="badge-primary">{project.category}</span>
-          <span class="text-sm text-neutral-500">{project.year}</span>
+          <span class="text-sm text-neutral-500 dark:text-neutral-400">{project.year}</span>
           {project.featured && (
-            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-700">
+            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400">
               ⭐ Destacado
             </span>
           )}
         </div>
 
-        <h1 class="heading-2 mb-4">{project.title}</h1>
+        <h1 class="heading-2 mb-4 text-neutral-900 dark:text-neutral-100">{project.title}</h1>
 
-        <p class="text-xl text-neutral-600 mb-6">
+        <p class="text-xl text-neutral-600 dark:text-neutral-400 mb-6">
           {project.shortDescription}
         </p>
 
@@ -92,19 +92,19 @@ if (!project) {
         <div class="lg:col-span-2 space-y-12">
           <!-- Description -->
           <section>
-            <h2 class="heading-4 mb-4">Descripción del Proyecto</h2>
+            <h2 class="heading-4 mb-4 text-neutral-900 dark:text-neutral-100">Descripción del Proyecto</h2>
             <p class="text-body">{project.longDescription}</p>
           </section>
 
           <!-- Features -->
           {project.features.length > 0 && (
             <section>
-              <h2 class="heading-4 mb-4">Características Principales</h2>
+              <h2 class="heading-4 mb-4 text-neutral-900 dark:text-neutral-100">Características Principales</h2>
               <ul class="space-y-3">
                 {project.features.map((feature) => (
                   <li class="flex items-start">
                     <svg
-                      class="w-6 h-6 text-primary-600 mr-3 flex-shrink-0 mt-0.5"
+                      class="w-6 h-6 text-primary-600 dark:text-primary-400 mr-3 flex-shrink-0 mt-0.5"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -116,7 +116,7 @@ if (!project) {
                         d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                       />
                     </svg>
-                    <span class="text-neutral-700">{feature}</span>
+                    <span class="text-neutral-700 dark:text-neutral-300">{feature}</span>
                   </li>
                 ))}
               </ul>
@@ -126,18 +126,18 @@ if (!project) {
           <!-- Challenges & Solutions -->
           {project.challenges.length > 0 && project.solutions.length > 0 && (
             <section>
-              <h2 class="heading-4 mb-6">Desafíos y Soluciones</h2>
+              <h2 class="heading-4 mb-6 text-neutral-900 dark:text-neutral-100">Desafíos y Soluciones</h2>
               <div class="space-y-6">
                 {project.challenges.map((challenge, index) => (
                   <div class="card p-6">
-                    <h3 class="font-semibold text-neutral-900 mb-2">
+                    <h3 class="font-semibold text-neutral-900 dark:text-neutral-100 mb-2">
                       Desafío {index + 1}
                     </h3>
-                    <p class="text-neutral-600 mb-3">{challenge}</p>
+                    <p class="text-neutral-600 dark:text-neutral-400 mb-3">{challenge}</p>
                     {project.solutions[index] && (
                       <>
-                        <h4 class="font-semibold text-primary-600 mb-2">Solución</h4>
-                        <p class="text-neutral-600">{project.solutions[index]}</p>
+                        <h4 class="font-semibold text-primary-600 dark:text-primary-400 mb-2">Solución</h4>
+                        <p class="text-neutral-600 dark:text-neutral-400">{project.solutions[index]}</p>
                       </>
                     )}
                   </div>
@@ -149,10 +149,10 @@ if (!project) {
           <!-- Screenshots -->
           {project.images.length > 1 && (
             <section>
-              <h2 class="heading-4 mb-6">Capturas de Pantalla</h2>
+              <h2 class="heading-4 mb-6 text-neutral-900 dark:text-neutral-100">Capturas de Pantalla</h2>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {project.images.slice(1).map((image, index) => (
-                  <div class="aspect-video bg-gradient-to-br from-neutral-200 to-neutral-300 rounded-lg overflow-hidden flex items-center justify-center">
+                  <div class="aspect-video bg-gradient-to-br from-neutral-200 dark:from-neutral-700 to-neutral-300 dark:to-neutral-800 rounded-lg overflow-hidden flex items-center justify-center">
                     <div class="text-4xl font-bold text-white/30">
                       {project.title.charAt(0)}{index + 1}
                     </div>
@@ -168,7 +168,7 @@ if (!project) {
           <div class="sticky top-24 space-y-6">
             <!-- Technologies -->
             <div class="card p-6">
-              <h3 class="font-semibold mb-4">Stack Tecnológico</h3>
+              <h3 class="font-semibold mb-4 text-neutral-900 dark:text-neutral-100">Stack Tecnológico</h3>
               <div class="flex flex-wrap gap-2">
                 {project.technologies.map((tech) => (
                   <span class="badge">{tech}</span>
@@ -178,27 +178,27 @@ if (!project) {
 
             <!-- Project Info -->
             <div class="card p-6">
-              <h3 class="font-semibold mb-4">Información del Proyecto</h3>
+              <h3 class="font-semibold mb-4 text-neutral-900 dark:text-neutral-100">Información del Proyecto</h3>
               <dl class="space-y-3">
                 <div>
-                  <dt class="text-sm text-neutral-500 mb-1">Categoría</dt>
-                  <dd class="text-sm font-medium text-neutral-900 capitalize">
+                  <dt class="text-sm text-neutral-500 dark:text-neutral-400 mb-1">Categoría</dt>
+                  <dd class="text-sm font-medium text-neutral-900 dark:text-neutral-100 capitalize">
                     {project.category}
                   </dd>
                 </div>
                 <div>
-                  <dt class="text-sm text-neutral-500 mb-1">Año</dt>
-                  <dd class="text-sm font-medium text-neutral-900">{project.year}</dd>
+                  <dt class="text-sm text-neutral-500 dark:text-neutral-400 mb-1">Año</dt>
+                  <dd class="text-sm font-medium text-neutral-900 dark:text-neutral-100">{project.year}</dd>
                 </div>
                 {project.demoUrl && (
                   <div>
-                    <dt class="text-sm text-neutral-500 mb-1">Demo</dt>
+                    <dt class="text-sm text-neutral-500 dark:text-neutral-400 mb-1">Demo</dt>
                     <dd>
                       <a
                         href={project.demoUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="text-sm font-medium text-primary-600 hover:text-primary-700 break-all"
+                        class="text-sm font-medium text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 break-all"
                       >
                         Ver sitio →
                       </a>
@@ -207,13 +207,13 @@ if (!project) {
                 )}
                 {project.githubUrl && (
                   <div>
-                    <dt class="text-sm text-neutral-500 mb-1">Repositorio</dt>
+                    <dt class="text-sm text-neutral-500 dark:text-neutral-400 mb-1">Repositorio</dt>
                     <dd>
                       <a
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="text-sm font-medium text-primary-600 hover:text-primary-700 break-all"
+                        class="text-sm font-medium text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 break-all"
                       >
                         Ver código →
                       </a>
@@ -224,10 +224,10 @@ if (!project) {
             </div>
 
             <!-- CTA -->
-            <div class="card p-6 bg-gradient-to-br from-primary-50 to-primary-100/50 border-primary-200">
-              <h3 class="font-semibold mb-2">¿Interesado en un proyecto similar?</h3>
-              <p class="text-sm text-neutral-600 mb-4">
-                Estoy disponible para nuevos proyectos. Hablemos sobre cómo puedo ayudarte.
+            <div class="card p-6 bg-gradient-to-br from-primary-50 dark:from-primary-950/30 to-primary-100/50 dark:to-primary-900/20 border-primary-200 dark:border-primary-800">
+              <h3 class="font-semibold mb-2 text-neutral-900 dark:text-neutral-100">¿Interesado en un proyecto similar?</h3>
+              <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-4">
+                Estamos disponibles para nuevos proyectos. Hablemos sobre cómo podemos ayudarte.
               </p>
               <a href="/#contacto" class="btn-primary w-full">
                 Contactar
@@ -239,11 +239,11 @@ if (!project) {
     </div>
 
     <!-- Navigation -->
-    <div class="container-custom mt-16 pt-12 border-t border-neutral-200">
+    <div class="container-custom mt-16 pt-12 border-t border-neutral-200 dark:border-neutral-700">
       <div class="flex justify-between items-center">
         <a
           href="/#proyectos"
-          class="inline-flex items-center text-sm font-medium text-neutral-600 hover:text-neutral-900 transition-colors"
+          class="inline-flex items-center text-sm font-medium text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
         >
           <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
