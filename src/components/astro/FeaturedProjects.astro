@@ -1,0 +1,84 @@
+---
+import { getFeaturedProjects } from '../../data/projects';
+
+const featuredProjects = getFeaturedProjects();
+---
+
+<section id="proyectos" class="section-padding bg-white">
+  <div class="container-custom">
+    <div class="text-center mb-12">
+      <h2 class="heading-2 mb-4">Proyectos Destacados</h2>
+      <p class="text-body max-w-2xl mx-auto">
+        Una selección de proyectos que demuestran mi experiencia en desarrollo de aplicaciones enterprise
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {featuredProjects.map((project, index) => (
+        <article
+          class="card p-0 overflow-hidden group animate-slide-up"
+          style={`animation-delay: ${index * 100}ms`}
+        >
+          <div class="aspect-video bg-neutral-200 relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-primary-500/20 to-primary-700/20 flex items-center justify-center">
+              <div class="text-6xl font-bold text-white/20">{project.title.charAt(0)}</div>
+            </div>
+          </div>
+
+          <div class="p-6">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="badge-primary text-xs">{project.category}</span>
+              <span class="text-xs text-neutral-500">{project.year}</span>
+            </div>
+
+            <h3 class="heading-4 mb-3 group-hover:text-primary-600 transition-colors">
+              {project.title}
+            </h3>
+
+            <p class="text-neutral-600 mb-4 line-clamp-2">
+              {project.shortDescription}
+            </p>
+
+            <div class="flex flex-wrap gap-2 mb-4">
+              {project.technologies.slice(0, 4).map(tech => (
+                <span class="badge text-xs">{tech}</span>
+              ))}
+              {project.technologies.length > 4 && (
+                <span class="badge text-xs">+{project.technologies.length - 4}</span>
+              )}
+            </div>
+
+            <div class="flex items-center gap-3">
+              <a
+                href={`/proyectos/${project.slug}`}
+                class="text-sm font-medium text-primary-600 hover:text-primary-700 transition-colors"
+              >
+                Ver detalles →
+              </a>
+              {project.demoUrl && (
+                <a
+                  href={project.demoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-sm font-medium text-neutral-600 hover:text-neutral-900 transition-colors"
+                >
+                  Demo
+                </a>
+              )}
+              {project.githubUrl && (
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-sm font-medium text-neutral-600 hover:text-neutral-900 transition-colors"
+                >
+                  GitHub
+                </a>
+              )}
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

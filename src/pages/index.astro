@@ -1,13 +1,19 @@
 ---
-// src/pages/index.astro
-import Layout from '../components/layout/Layout.astro';
-import Hero from '../components/react/Hero';
-import Projects from '../components/react/Projects';
-import Skills from '../components/react/Skills';
+import MainLayout from '../layouts/MainLayout.astro';
+import Hero from '../components/astro/Hero.astro';
+import FeaturedProjects from '../components/astro/FeaturedProjects.astro';
+import MinorProjects from '../components/astro/MinorProjects.astro';
+import About from '../components/astro/About.astro';
+import Contact from '../components/astro/Contact.astro';
 ---
 
-<Layout title="LambdaCodeStudio - Portfolio Creativo">
-  <Hero client:load />
-  <Projects client:visible />
-  <Skills client:visible />
-</Layout>
+<MainLayout
+  title="Lambda Code Studio - Desarrollo de Software a Medida"
+  description="Equipo de desarrolladores especializados en crear soluciones web completas. Proyectos como DistriLink, Odontocare, Luxury y Maestro Obras."
+>
+  <Hero />
+  <FeaturedProjects />
+  <MinorProjects />
+  <About />
+  <Contact />
+</MainLayout>

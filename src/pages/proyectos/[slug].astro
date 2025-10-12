@@ -1,0 +1,256 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import { projects, getProjectBySlug } from '../../data/projects';
+
+export async function getStaticPaths() {
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+
+if (!project) {
+  return Astro.redirect('/404');
+}
+---
+
+<MainLayout
+  title={`${project.title} - Tu Nombre`}
+  description={project.shortDescription}
+>
+  <article class="py-16">
+    <!-- Back Button -->
+    <div class="container-custom mb-8">
+      <a
+        href="/#proyectos"
+        class="inline-flex items-center text-sm font-medium text-neutral-600 hover:text-neutral-900 transition-colors"
+      >
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        Volver a proyectos
+      </a>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="container-custom mb-12">
+      <div class="max-w-4xl">
+        <div class="flex flex-wrap items-center gap-3 mb-4">
+          <span class="badge-primary">{project.category}</span>
+          <span class="text-sm text-neutral-500">{project.year}</span>
+          {project.featured && (
+            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-700">
+              ⭐ Destacado
+            </span>
+          )}
+        </div>
+
+        <h1 class="heading-2 mb-4">{project.title}</h1>
+
+        <p class="text-xl text-neutral-600 mb-6">
+          {project.shortDescription}
+        </p>
+
+        <div class="flex flex-wrap gap-3">
+          {project.demoUrl && (
+            <a
+              href={project.demoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-primary"
+            >
+              Ver Demo
+            </a>
+          )}
+          {project.githubUrl && (
+            <a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-outline"
+            >
+              Ver Código
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Image -->
+    <div class="container-custom mb-12">
+      <div class="aspect-video bg-gradient-to-br from-primary-500/20 to-primary-700/20 rounded-xl overflow-hidden flex items-center justify-center">
+        <div class="text-8xl font-bold text-white/30">{project.title.charAt(0)}</div>
+      </div>
+    </div>
+
+    <!-- Content Grid -->
+    <div class="container-custom">
+      <div class="grid lg:grid-cols-3 gap-12">
+        <!-- Main Content -->
+        <div class="lg:col-span-2 space-y-12">
+          <!-- Description -->
+          <section>
+            <h2 class="heading-4 mb-4">Descripción del Proyecto</h2>
+            <p class="text-body">{project.longDescription}</p>
+          </section>
+
+          <!-- Features -->
+          {project.features.length > 0 && (
+            <section>
+              <h2 class="heading-4 mb-4">Características Principales</h2>
+              <ul class="space-y-3">
+                {project.features.map((feature) => (
+                  <li class="flex items-start">
+                    <svg
+                      class="w-6 h-6 text-primary-600 mr-3 flex-shrink-0 mt-0.5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                    <span class="text-neutral-700">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+
+          <!-- Challenges & Solutions -->
+          {project.challenges.length > 0 && project.solutions.length > 0 && (
+            <section>
+              <h2 class="heading-4 mb-6">Desafíos y Soluciones</h2>
+              <div class="space-y-6">
+                {project.challenges.map((challenge, index) => (
+                  <div class="card p-6">
+                    <h3 class="font-semibold text-neutral-900 mb-2">
+                      Desafío {index + 1}
+                    </h3>
+                    <p class="text-neutral-600 mb-3">{challenge}</p>
+                    {project.solutions[index] && (
+                      <>
+                        <h4 class="font-semibold text-primary-600 mb-2">Solución</h4>
+                        <p class="text-neutral-600">{project.solutions[index]}</p>
+                      </>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+
+          <!-- Screenshots -->
+          {project.images.length > 1 && (
+            <section>
+              <h2 class="heading-4 mb-6">Capturas de Pantalla</h2>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {project.images.slice(1).map((image, index) => (
+                  <div class="aspect-video bg-gradient-to-br from-neutral-200 to-neutral-300 rounded-lg overflow-hidden flex items-center justify-center">
+                    <div class="text-4xl font-bold text-white/30">
+                      {project.title.charAt(0)}{index + 1}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+        </div>
+
+        <!-- Sidebar -->
+        <div class="lg:col-span-1">
+          <div class="sticky top-24 space-y-6">
+            <!-- Technologies -->
+            <div class="card p-6">
+              <h3 class="font-semibold mb-4">Stack Tecnológico</h3>
+              <div class="flex flex-wrap gap-2">
+                {project.technologies.map((tech) => (
+                  <span class="badge">{tech}</span>
+                ))}
+              </div>
+            </div>
+
+            <!-- Project Info -->
+            <div class="card p-6">
+              <h3 class="font-semibold mb-4">Información del Proyecto</h3>
+              <dl class="space-y-3">
+                <div>
+                  <dt class="text-sm text-neutral-500 mb-1">Categoría</dt>
+                  <dd class="text-sm font-medium text-neutral-900 capitalize">
+                    {project.category}
+                  </dd>
+                </div>
+                <div>
+                  <dt class="text-sm text-neutral-500 mb-1">Año</dt>
+                  <dd class="text-sm font-medium text-neutral-900">{project.year}</dd>
+                </div>
+                {project.demoUrl && (
+                  <div>
+                    <dt class="text-sm text-neutral-500 mb-1">Demo</dt>
+                    <dd>
+                      <a
+                        href={project.demoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-sm font-medium text-primary-600 hover:text-primary-700 break-all"
+                      >
+                        Ver sitio →
+                      </a>
+                    </dd>
+                  </div>
+                )}
+                {project.githubUrl && (
+                  <div>
+                    <dt class="text-sm text-neutral-500 mb-1">Repositorio</dt>
+                    <dd>
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-sm font-medium text-primary-600 hover:text-primary-700 break-all"
+                      >
+                        Ver código →
+                      </a>
+                    </dd>
+                  </div>
+                )}
+              </dl>
+            </div>
+
+            <!-- CTA -->
+            <div class="card p-6 bg-gradient-to-br from-primary-50 to-primary-100/50 border-primary-200">
+              <h3 class="font-semibold mb-2">¿Interesado en un proyecto similar?</h3>
+              <p class="text-sm text-neutral-600 mb-4">
+                Estoy disponible para nuevos proyectos. Hablemos sobre cómo puedo ayudarte.
+              </p>
+              <a href="/#contacto" class="btn-primary w-full">
+                Contactar
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="container-custom mt-16 pt-12 border-t border-neutral-200">
+      <div class="flex justify-between items-center">
+        <a
+          href="/#proyectos"
+          class="inline-flex items-center text-sm font-medium text-neutral-600 hover:text-neutral-900 transition-colors"
+        >
+          <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+          Ver todos los proyectos
+        </a>
+      </div>
+    </div>
+  </article>
+</MainLayout>
