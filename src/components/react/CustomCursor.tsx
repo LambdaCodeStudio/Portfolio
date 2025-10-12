@@ -55,9 +55,9 @@ export default function CustomCursor() {
       dotX += (mouseX - dotX) * dotLagFactor;
       dotY += (mouseY - dotY) * dotLagFactor;
 
-      // w-12 = 48px, so center offset is 24px
+      // Offset to center: w-12 = 48px, center at 24px
       cursor.style.transform = `translate3d(${cursorX - 24}px, ${cursorY - 24}px, 0)`;
-      // w-2 = 8px, so center offset is 4px
+      // Offset to center: w-2 = 8px, center at 4px
       cursorDot.style.transform = `translate3d(${dotX - 4}px, ${dotY - 4}px, 0)`;
 
       rafRef.current = requestAnimationFrame(animate);
@@ -117,57 +117,65 @@ export default function CustomCursor() {
   return (
     <>
       {/* Robotic cursor with corners */}
-      <motion.div
+      <div
         ref={cursorRef}
-        className="fixed top-0 left-0 w-12 h-12 pointer-events-none z-[10001] hidden md:block"
+        className="fixed top-0 left-0 pointer-events-none z-[10001] hidden md:block"
         style={{ willChange: 'transform' }}
-        initial={{ opacity: 0 }}
-        animate={{
-          opacity: isVisible ? 1 : 0,
-          scale: isHovering ? 1.3 : isClicking ? 0.9 : 1,
-          rotate: isHovering ? 45 : 0
-        }}
-        transition={{ duration: 0.3, ease: 'easeOut' }}
       >
-        {/* Top-left corner */}
-        <div className="absolute top-0 left-0 w-3 h-3 border-l-2 border-t-2 border-blue-400 dark:border-blue-500" />
-        {/* Top-right corner */}
-        <div className="absolute top-0 right-0 w-3 h-3 border-r-2 border-t-2 border-blue-400 dark:border-blue-500" />
-        {/* Bottom-left corner */}
-        <div className="absolute bottom-0 left-0 w-3 h-3 border-l-2 border-b-2 border-blue-400 dark:border-blue-500" />
-        {/* Bottom-right corner */}
-        <div className="absolute bottom-0 right-0 w-3 h-3 border-r-2 border-b-2 border-blue-400 dark:border-blue-500" />
+        <motion.div
+          className="w-12 h-12 relative"
+          initial={{ opacity: 0 }}
+          animate={{
+            opacity: isVisible ? 1 : 0,
+            scale: isHovering ? 1.3 : isClicking ? 0.9 : 1,
+            rotate: isHovering ? 45 : 0
+          }}
+          transition={{ duration: 0.3, ease: 'easeOut' }}
+        >
+          {/* Top-left corner */}
+          <div className="absolute top-0 left-0 w-3 h-3 border-l-2 border-t-2 border-blue-400 dark:border-blue-500" />
+          {/* Top-right corner */}
+          <div className="absolute top-0 right-0 w-3 h-3 border-r-2 border-t-2 border-blue-400 dark:border-blue-500" />
+          {/* Bottom-left corner */}
+          <div className="absolute bottom-0 left-0 w-3 h-3 border-l-2 border-b-2 border-blue-400 dark:border-blue-500" />
+          {/* Bottom-right corner */}
+          <div className="absolute bottom-0 right-0 w-3 h-3 border-r-2 border-b-2 border-blue-400 dark:border-blue-500" />
 
-        {/* Center crosshair */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-          <motion.div
-            className="w-0.5 h-4 bg-blue-400 dark:bg-blue-500 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            animate={{ height: isHovering ? 6 : 4 }}
-          />
-          <motion.div
-            className="h-0.5 w-4 bg-blue-400 dark:bg-blue-500 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            animate={{ width: isHovering ? 6 : 4 }}
-          />
-        </div>
-      </motion.div>
+          {/* Center crosshair */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+            <motion.div
+              className="w-0.5 h-4 bg-blue-400 dark:bg-blue-500 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+              animate={{ height: isHovering ? 6 : 4 }}
+            />
+            <motion.div
+              className="h-0.5 w-4 bg-blue-400 dark:bg-blue-500 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+              animate={{ width: isHovering ? 6 : 4 }}
+            />
+          </div>
+        </motion.div>
+      </div>
 
       {/* Center dot - scanning effect */}
-      <motion.div
+      <div
         ref={cursorDotRef}
-        className="fixed top-0 left-0 w-2 h-2 pointer-events-none z-[10002] hidden md:block"
+        className="fixed top-0 left-0 pointer-events-none z-[10002] hidden md:block"
         style={{ willChange: 'transform' }}
-        initial={{ opacity: 0 }}
-        animate={{
-          opacity: isVisible ? [0.6, 1, 0.6] : 0,
-          scale: isClicking ? 0.5 : 1
-        }}
-        transition={{
-          opacity: { duration: 1.5, repeat: Infinity, ease: 'easeInOut' },
-          scale: { duration: 0.1 }
-        }}
       >
-        <div className="w-full h-full rounded-full bg-blue-400 dark:bg-blue-500 shadow-[0_0_10px_rgba(96,165,250,0.8)]" />
-      </motion.div>
+        <motion.div
+          className="w-2 h-2 relative"
+          initial={{ opacity: 0 }}
+          animate={{
+            opacity: isVisible ? [0.6, 1, 0.6] : 0,
+            scale: isClicking ? 0.5 : 1
+          }}
+          transition={{
+            opacity: { duration: 1.5, repeat: Infinity, ease: 'easeInOut' },
+            scale: { duration: 0.1 }
+          }}
+        >
+          <div className="w-full h-full rounded-full bg-blue-400 dark:bg-blue-500 shadow-[0_0_10px_rgba(96,165,250,0.8)]" />
+        </motion.div>
+      </div>
 
       {/* Click effects with binary code */}
       <AnimatePresence>
