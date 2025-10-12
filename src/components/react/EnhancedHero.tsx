@@ -134,18 +134,18 @@ export default function EnhancedHero() {
           {/* Buttons with magnetic effect */}
           <div ref={buttonsRef} className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16">
             <MagneticButton
+              href="/#proyectos"
               className="btn-primary w-full sm:w-auto px-8 py-4 text-lg relative overflow-hidden group"
               strength={0.4}
-              onClick={() => document.getElementById('proyectos')?.scrollIntoView({ behavior: 'smooth' })}
             >
               <span className="relative z-10">Ver Proyectos</span>
               <div className="absolute inset-0 bg-gradient-to-r from-primary-700 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </MagneticButton>
 
             <MagneticButton
+              href="/#contacto"
               className="btn-outline w-full sm:w-auto px-8 py-4 text-lg"
               strength={0.4}
-              onClick={() => document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' })}
             >
               Contactar
             </MagneticButton>

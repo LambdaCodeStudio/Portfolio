@@ -6,6 +6,7 @@ interface MagneticButtonProps {
   className?: string;
   strength?: number;
   onClick?: () => void;
+  href?: string;
 }
 
 export default function MagneticButton({
@@ -13,11 +14,12 @@ export default function MagneticButton({
   className = '',
   strength = 0.3,
   onClick,
+  href,
 }: MagneticButtonProps) {
-  const ref = useRef<HTMLButtonElement>(null);
+  const ref = useRef<any>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleMouseMove = (e: React.MouseEvent) => {
     if (!ref.current) return;
 
     const rect = ref.current.getBoundingClientRect();
@@ -31,17 +33,20 @@ export default function MagneticButton({
     setPosition({ x: 0, y: 0 });
   };
 
+  const Component = href ? motion.a : motion.button;
+
   return (
-    <motion.button
+    <Component
       ref={ref}
       className={className}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onClick={onClick}
+      href={href}
       animate={{ x: position.x, y: position.y }}
       transition={{ type: 'spring', stiffness: 150, damping: 15, mass: 0.1 }}
     >
       {children}
-    </motion.button>
+    </Component>
   );
 }
