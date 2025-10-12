@@ -107,7 +107,7 @@ export default function EnhancedHero() {
           {/* Main Title */}
           <h1
             ref={titleRef}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-neutral-900 dark:text-neutral-100 px-4"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-neutral-900 dark:text-neutral-100 px-6"
             style={{ perspective: '1000px' }}
           >
             Lambda Code Studio
@@ -116,7 +116,7 @@ export default function EnhancedHero() {
           {/* Subtitle with gradient */}
           <span
             ref={subtitleRef}
-            className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-8 bg-gradient-to-r from-primary-600 via-blue-600 to-primary-600 dark:from-primary-400 dark:via-blue-400 dark:to-primary-400 bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient px-4"
+            className="block text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-8 bg-gradient-to-r from-primary-600 via-blue-600 to-primary-600 dark:from-primary-400 dark:via-blue-400 dark:to-primary-400 bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient px-6"
           >
             Desarrollo de Software a Medida
           </span>
