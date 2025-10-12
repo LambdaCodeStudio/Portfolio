@@ -4,7 +4,6 @@ import ThemeToggle from '../components/react/ThemeToggle';
 import SmoothScroll from '../components/react/SmoothScroll';
 import CustomCursor from '../components/react/CustomCursor';
 import AnimatedBackground from '../components/react/AnimatedBackground';
-import FloatingAI from '../components/react/FloatingAI';
 
 interface Props {
   title: string;
@@ -46,9 +45,6 @@ const {
 
     <!-- Animated Background -->
     <AnimatedBackground client:load />
-
-    <!-- Floating AI -->
-    <FloatingAI client:load />
 
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-neutral-900/80 backdrop-blur-md border-b border-neutral-200 dark:border-neutral-700 transition-colors" role="navigation" aria-label="Navegación principal">
