@@ -4,11 +4,11 @@ import { getMinorProjects } from '../../data/projects';
 const minorProjects = getMinorProjects();
 ---
 
-<section class="section-padding bg-neutral-50">
+<section class="section-padding bg-neutral-50 dark:bg-neutral-950">
   <div class="container-custom">
     <div class="text-center mb-12">
-      <h2 class="heading-3 mb-4">Más Proyectos</h2>
-      <p class="text-neutral-600 max-w-2xl mx-auto">
+      <h2 class="heading-3 mb-4 text-neutral-900 dark:text-neutral-100">Más Proyectos</h2>
+      <p class="text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
         Otros proyectos y experimentos que he desarrollado
       </p>
     </div>
@@ -18,24 +18,24 @@ const minorProjects = getMinorProjects();
         <article class="card p-6 group">
           <div class="flex items-start justify-between mb-3">
             <div class="flex items-center gap-2">
-              <div class="w-10 h-10 rounded-lg bg-primary-100 flex items-center justify-center text-primary-600 font-bold">
+              <div class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center text-primary-600 dark:text-primary-400 font-bold">
                 {project.title.charAt(0)}
               </div>
             </div>
             <span class="badge-primary text-xs">{project.category}</span>
           </div>
 
-          <h3 class="text-lg font-semibold mb-2 group-hover:text-primary-600 transition-colors">
+          <h3 class="text-lg font-semibold mb-2 text-neutral-900 dark:text-neutral-100 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
             {project.title}
           </h3>
 
-          <p class="text-sm text-neutral-600 mb-4 line-clamp-2">
+          <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-4 line-clamp-2">
             {project.shortDescription}
           </p>
 
           <div class="flex flex-wrap gap-2 mb-4">
             {project.technologies.slice(0, 3).map(tech => (
-              <span class="text-xs px-2 py-1 bg-neutral-100 text-neutral-600 rounded">
+              <span class="text-xs px-2 py-1 bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 rounded">
                 {tech}
               </span>
             ))}
@@ -47,7 +47,7 @@ const minorProjects = getMinorProjects();
                 href={project.demoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="font-medium text-primary-600 hover:text-primary-700 transition-colors"
+                class="font-medium text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 transition-colors"
               >
                 Demo →
               </a>
@@ -57,7 +57,7 @@ const minorProjects = getMinorProjects();
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="font-medium text-neutral-600 hover:text-neutral-900 transition-colors"
+                class="font-medium text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
               >
                 GitHub →
               </a>

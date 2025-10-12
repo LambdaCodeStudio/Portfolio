@@ -1,5 +1,9 @@
 ---
 import '../styles/global.css';
+import ThemeToggle from '../components/react/ThemeToggle';
+import SmoothScroll from '../components/react/SmoothScroll';
+import CustomCursor from '../components/react/CustomCursor';
+import AnimatedBackground from '../components/react/AnimatedBackground';
 
 interface Props {
   title: string;
@@ -31,48 +35,61 @@ const {
     <meta name="twitter:description" content={description} />
   </head>
   <body>
+    <!-- Smooth Scroll -->
+    <SmoothScroll client:load />
+
+    <!-- Custom Cursor -->
+    <CustomCursor client:load />
+
+    <!-- Animated Background -->
+    <AnimatedBackground client:load />
+
     <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-neutral-200">
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-neutral-900/80 backdrop-blur-md border-b border-neutral-200 dark:border-neutral-700 transition-colors">
       <div class="container-custom">
         <div class="flex items-center justify-between h-16">
-          <a href="/" class="text-xl font-bold text-neutral-900 hover:text-primary-600 transition-colors">
+          <a href="/" class="text-xl font-bold text-neutral-900 dark:text-neutral-100 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
             Lambda Code Studio
           </a>
 
-          <div class="hidden md:flex items-center gap-8">
-            <a href="#proyectos" class="text-sm font-medium text-neutral-600 hover:text-neutral-900 transition-colors">
+          <div class="hidden md:flex items-center gap-6">
+            <a href="#proyectos" class="text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">
               Proyectos
             </a>
-            <a href="#sobre-mi" class="text-sm font-medium text-neutral-600 hover:text-neutral-900 transition-colors">
+            <a href="#sobre-mi" class="text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">
               Sobre mí
             </a>
-            <a href="#contacto" class="text-sm font-medium text-neutral-600 hover:text-neutral-900 transition-colors">
+            <a href="#contacto" class="text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">
               Contacto
             </a>
+            <ThemeToggle client:load />
           </div>
 
-          <!-- Mobile Menu Button -->
-          <button
-            id="mobile-menu-button"
-            class="md:hidden p-2 text-neutral-600 hover:text-neutral-900"
-            aria-label="Toggle menu"
-          >
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
+          <!-- Mobile Menu Button & Theme Toggle -->
+          <div class="md:hidden flex items-center gap-2">
+            <ThemeToggle client:load />
+            <button
+              id="mobile-menu-button"
+              class="p-2 text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
+              aria-label="Toggle menu"
+            >
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
         </div>
 
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden pb-4">
           <div class="flex flex-col gap-4">
-            <a href="#proyectos" class="text-sm font-medium text-neutral-600 hover:text-neutral-900 transition-colors">
+            <a href="#proyectos" class="text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">
               Proyectos
             </a>
-            <a href="#sobre-mi" class="text-sm font-medium text-neutral-600 hover:text-neutral-900 transition-colors">
+            <a href="#sobre-mi" class="text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">
               Sobre mí
             </a>
-            <a href="#contacto" class="text-sm font-medium text-neutral-600 hover:text-neutral-900 transition-colors">
+            <a href="#contacto" class="text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">
               Contacto
             </a>
           </div>
@@ -86,7 +103,7 @@ const {
     </main>
 
     <!-- Footer -->
-    <footer class="bg-neutral-900 text-neutral-400 py-12">
+    <footer class="bg-neutral-900 dark:bg-neutral-950 text-neutral-400 dark:text-neutral-500 py-12 transition-colors">
       <div class="container-custom">
         <div class="flex flex-col md:flex-row justify-between items-center gap-4">
           <p class="text-sm">
@@ -97,7 +114,7 @@ const {
               href="https://github.com/lambdacodestudio"
               target="_blank"
               rel="noopener noreferrer"
-              class="hover:text-white transition-colors"
+              class="hover:text-white dark:hover:text-neutral-200 transition-colors"
               aria-label="GitHub"
             >
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -108,7 +125,7 @@ const {
               href="https://wa.me/542216032737"
               target="_blank"
               rel="noopener noreferrer"
-              class="hover:text-white transition-colors"
+              class="hover:text-white dark:hover:text-neutral-200 transition-colors"
               aria-label="WhatsApp"
             >
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -117,7 +134,7 @@ const {
             </a>
             <a
               href="mailto:lambdacodestudio@gmail.com"
-              class="hover:text-white transition-colors"
+              class="hover:text-white dark:hover:text-neutral-200 transition-colors"
               aria-label="Email"
             >
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

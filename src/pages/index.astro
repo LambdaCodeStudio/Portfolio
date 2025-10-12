@@ -1,6 +1,7 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
-import Hero from '../components/astro/Hero.astro';
+import EnhancedHero from '../components/react/EnhancedHero';
+import ScrollReveal from '../components/react/ScrollReveal';
 import FeaturedProjects from '../components/astro/FeaturedProjects.astro';
 import MinorProjects from '../components/astro/MinorProjects.astro';
 import About from '../components/astro/About.astro';
@@ -11,9 +12,21 @@ import Contact from '../components/astro/Contact.astro';
   title="Lambda Code Studio - Desarrollo de Software a Medida"
   description="Equipo de desarrolladores especializados en crear soluciones web completas. Proyectos como DistriLink, Odontocare, Luxury y Maestro Obras."
 >
-  <Hero />
-  <FeaturedProjects />
-  <MinorProjects />
-  <About />
-  <Contact />
+  <EnhancedHero client:load />
+
+  <ScrollReveal client:load animation="slideUp">
+    <FeaturedProjects />
+  </ScrollReveal>
+
+  <ScrollReveal client:load animation="slideUp" delay={0.2}>
+    <MinorProjects />
+  </ScrollReveal>
+
+  <ScrollReveal client:load animation="slideUp" delay={0.2}>
+    <About />
+  </ScrollReveal>
+
+  <ScrollReveal client:load animation="slideUp" delay={0.2}>
+    <Contact />
+  </ScrollReveal>
 </MainLayout>
