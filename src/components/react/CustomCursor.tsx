@@ -67,14 +67,12 @@ export default function CustomCursor() {
     const handleMouseEnter = () => setIsHovering(true);
     const handleMouseLeave = () => setIsHovering(false);
 
-    // Handle clicks with effect
-    const handleMouseDown = (e: MouseEvent) => {
-      setIsClicking(true);
-      // Create click effect
+    // Function to create click effect (used by both mouse and touch)
+    const createClickEffect = (x: number, y: number) => {
       const newEffect: ClickEffect = {
         id: Date.now() + Math.random(),
-        x: e.clientX,
-        y: e.clientY,
+        x,
+        y,
       };
       setClickEffects(prev => [...prev, newEffect]);
       // Remove effect after animation
@@ -82,12 +80,27 @@ export default function CustomCursor() {
         setClickEffects(prev => prev.filter(effect => effect.id !== newEffect.id));
       }, 1000);
     };
+
+    // Handle clicks with effect
+    const handleMouseDown = (e: MouseEvent) => {
+      setIsClicking(true);
+      createClickEffect(e.clientX, e.clientY);
+    };
     const handleMouseUp = () => setIsClicking(false);
+
+    // Handle touch events for mobile
+    const handleTouchStart = (e: TouchEvent) => {
+      if (e.touches.length > 0) {
+        const touch = e.touches[0];
+        createClickEffect(touch.clientX, touch.clientY);
+      }
+    };
 
     // Add event listeners
     document.addEventListener('mousemove', handleMouseMove);
     document.addEventListener('mousedown', handleMouseDown);
     document.addEventListener('mouseup', handleMouseUp);
+    document.addEventListener('touchstart', handleTouchStart, { passive: true });
 
     // Add hover listeners to interactive elements
     const interactiveElements = document.querySelectorAll('a, button, [role="button"]');
@@ -107,6 +120,7 @@ export default function CustomCursor() {
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mousedown', handleMouseDown);
       document.removeEventListener('mouseup', handleMouseUp);
+      document.removeEventListener('touchstart', handleTouchStart);
       interactiveElements.forEach(el => {
         el.removeEventListener('mouseenter', handleMouseEnter);
         el.removeEventListener('mouseleave', handleMouseLeave);
@@ -185,7 +199,7 @@ export default function CustomCursor() {
           <div key={effect.id} aria-hidden="true">
             {/* Ripple effect */}
             <motion.div
-              className="fixed rounded-full border-2 border-blue-400 dark:border-blue-500 pointer-events-none z-[10000] hidden md:block"
+              className="fixed rounded-full border-2 border-blue-400 dark:border-blue-500 pointer-events-none z-[10000]"
               style={{
                 left: effect.x,
                 top: effect.y,
@@ -204,7 +218,7 @@ export default function CustomCursor() {
               return (
                 <motion.div
                   key={i}
-                  className="fixed text-blue-400 dark:text-blue-500 font-mono font-bold text-lg pointer-events-none z-[10000] hidden md:block"
+                  className="fixed text-blue-400 dark:text-blue-500 font-mono font-bold text-lg pointer-events-none z-[10000]"
                   style={{
                     left: effect.x,
                     top: effect.y,
