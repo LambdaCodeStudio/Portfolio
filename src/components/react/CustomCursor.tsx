@@ -121,6 +121,7 @@ export default function CustomCursor() {
         ref={cursorRef}
         className="fixed top-0 left-0 pointer-events-none z-[10001] hidden md:block"
         style={{ willChange: 'transform' }}
+        aria-hidden="true"
       >
         <motion.div
           className="w-12 h-12 relative"
@@ -160,6 +161,7 @@ export default function CustomCursor() {
         ref={cursorDotRef}
         className="fixed top-0 left-0 pointer-events-none z-[10002] hidden md:block"
         style={{ willChange: 'transform' }}
+        aria-hidden="true"
       >
         <motion.div
           className="w-2 h-2 relative"
@@ -180,7 +182,7 @@ export default function CustomCursor() {
       {/* Click effects with binary code */}
       <AnimatePresence>
         {clickEffects.map((effect) => (
-          <div key={effect.id}>
+          <div key={effect.id} aria-hidden="true">
             {/* Ripple effect */}
             <motion.div
               className="fixed rounded-full border-2 border-blue-400 dark:border-blue-500 pointer-events-none z-[10000] hidden md:block"
