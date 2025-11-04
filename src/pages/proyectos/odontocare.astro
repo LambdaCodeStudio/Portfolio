@@ -14,25 +14,50 @@ if (!project) {
   return Astro.redirect('/404');
 }
 
-// Define the pricing data
+// Define the pricing data - 3 tiers
 const pricingPlans = [
+  {
+    name: 'Plan Básico',
+    badge: 'INICIAL',
+    badgeColor: 'slate',
+    description: 'Ideal para consultorios pequeños que inician',
+    monthlyPrice: 25000,
+    yearlyPrice: 270000,
+    discount: 10,
+    features: [
+      'Sistema en la nube (SaaS)',
+      'Hasta 1 usuario',
+      'Gestión de hasta 100 pacientes',
+      'Agenda digital básica',
+      'Odontograma simplificado',
+      'Historial clínico digital',
+      'Soporte por email',
+      'Backups automáticos semanales'
+    ],
+    highlighted: false
+  },
   {
     name: 'Plan Multi-Tenant',
     badge: 'MÁS POPULAR',
-    badgeColor: 'teal',
-    description: 'Sistema en la nube completo para consultorios modernos',
+    badgeColor: 'blue',
+    description: 'Sistema completo para consultorios modernos',
     monthlyPrice: 40000,
     yearlyPrice: 420000,
     discount: 12,
     features: [
-      'Sistema en la nube (SaaS)',
+      'Todo del plan Básico +',
+      'Hasta 2 usuarios (escalable)',
+      'Pacientes ilimitados',
       'Todas las funcionalidades incluidas',
+      'Agenda inteligente avanzada',
+      'Odontograma profesional completo',
+      'Gestión completa de pagos',
+      'Reportes y estadísticas avanzadas',
       'Actualizaciones automáticas',
       'Backups automáticos diarios',
-      'Soporte por email y chat',
+      'Soporte prioritario por email y chat',
       'Capacitación inicial incluida',
-      'Acceso multi-dispositivo',
-      'Sin costos de instalación'
+      'Acceso multi-dispositivo'
     ],
     highlighted: true
   },
@@ -40,7 +65,7 @@ const pricingPlans = [
     name: 'Sistema Dedicado',
     badge: 'ENTERPRISE',
     badgeColor: 'purple',
-    description: 'Infraestructura exclusiva para redes de consultorios',
+    description: 'Infraestructura exclusiva para redes',
     monthlyPrice: 120000,
     yearlyPrice: 1000000,
     discount: 17,
@@ -48,62 +73,66 @@ const pricingPlans = [
       'Todo del plan Multi-Tenant +',
       'Servidor dedicado exclusivo',
       'Base de datos propia aislada',
+      'Usuarios ilimitados',
       'Gestión multi-sucursal avanzada',
       'Personalización completa del sistema',
       'API privada para integraciones',
+      'Desarrollo de funcionalidades custom',
       'Soporte prioritario 24/7',
-      'SLA 99.9% de uptime garantizado'
+      'SLA 99.9% de uptime garantizado',
+      'Migraciones y backups personalizados',
+      'Consultor técnico dedicado'
     ],
     highlighted: false
   }
 ];
 
-// Define features
+// Define features - 9 features in 3x3 grid
 const features = [
   {
     icon: 'users',
     title: 'Gestión de Pacientes',
-    description: 'Fichas completas con historial clínico, obra social, contactos de emergencia y más.'
+    description: 'Fichas completas con historial clínico, obra social, contactos de emergencia y documentación digital.'
   },
   {
     icon: 'calendar',
     title: 'Agenda Inteligente',
-    description: 'Calendario con confirmaciones automáticas, verificación de disponibilidad y recordatorios.'
+    description: 'Calendario con confirmaciones automáticas, verificación de disponibilidad y recordatorios por SMS/email.'
   },
   {
     icon: 'tooth',
     title: 'Odontograma Digital',
-    description: 'Editor visual con 32 dientes, tratamiento por superficie, 3 notaciones internacionales.'
+    description: 'Editor visual con 32 dientes, tratamiento por superficie y 3 notaciones internacionales (FDI, Universal, Palmer).'
   },
   {
     icon: 'document',
     title: 'Historia Clínica Digital',
-    description: 'Anamnesis completa, antecedentes médicos, alergias, medicación y archivos adjuntos.'
+    description: 'Anamnesis completa, antecedentes médicos, alergias, medicación actual y archivos adjuntos (radiografías, fotos).'
   },
   {
     icon: 'payment',
     title: 'Gestión de Pagos',
-    description: 'Control de prestaciones, pagos parciales, sobrepagos, múltiples métodos de pago.'
+    description: 'Control de prestaciones, pagos parciales, sobrepagos, múltiples métodos de pago y generación de recibos.'
   },
   {
     icon: 'shield',
     title: 'Seguridad Enterprise',
-    description: 'Encriptación, auditoría completa, HIPAA/GDPR compliant, backups automáticos.'
+    description: 'Encriptación AES-256, auditoría completa de operaciones, HIPAA/GDPR compliant, backups automáticos cifrados.'
   },
   {
     icon: 'audit',
     title: 'Sistema de Auditoría',
-    description: 'Trazabilidad completa de todas las operaciones, detección de anomalías, exportación.'
+    description: 'Trazabilidad completa de todas las operaciones del sistema, detección de anomalías y exportación de logs.'
   },
   {
     icon: 'chart',
     title: 'Reportes Avanzados',
-    description: 'Estadísticas financieras, ocupación, productividad, exportación a Excel/PDF.'
+    description: 'Estadísticas financieras, ocupación de agenda, productividad por profesional, exportación a Excel/PDF.'
   },
   {
     icon: 'devices',
     title: 'Multi-dispositivo',
-    description: 'Accede desde cualquier lugar: PC, tablet, smartphone. Responsive y optimizado.'
+    description: 'Accede desde cualquier lugar: PC, tablet, smartphone. Diseño responsive y optimizado para todos los dispositivos.'
   }
 ];
 ---
@@ -147,16 +176,16 @@ const features = [
 <style>
   /* Custom styles for Odontocare page */
   :global(.medical-gradient) {
-    background: linear-gradient(135deg, #14b8a6 0%, #06b6d4 100%);
+    background: linear-gradient(135deg, #1c31a5 0%, #3a89c9 100%);
   }
 
   :global(.glass-effect) {
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(58, 137, 201, 0.2);
   }
 
   :global(.medical-glow) {
-    box-shadow: 0 0 40px rgba(20, 184, 166, 0.3);
+    box-shadow: 0 0 40px rgba(28, 49, 165, 0.4);
   }
 </style>

@@ -4,13 +4,14 @@ import { useState } from 'react';
 interface PricingPlan {
   name: string;
   badge: string;
-  badgeColor: 'blue' | 'purple' | 'slate';
+  badgeColor: 'orange' | 'amber' | 'slate';
   description: string;
-  monthlyPrice: number;
-  yearlyPrice: number;
-  discount: number;
+  monthlyPrice?: number;
+  yearlyPrice?: number;
+  discount?: number;
   features: string[];
   highlighted: boolean;
+  customPrice?: boolean;
 }
 
 interface PricingSectionProps {
@@ -29,23 +30,23 @@ const PricingSection = ({ plans }: PricingSectionProps) => {
     }).format(price);
   };
 
-  const getBadgeColor = (color: 'blue' | 'purple' | 'slate') => {
+  const getBadgeColor = (color: 'orange' | 'amber' | 'slate') => {
     switch (color) {
-      case 'blue':
-        return 'bg-gradient-to-r from-[#1c31a5] to-[#3a89c9] text-white';
-      case 'purple':
-        return 'bg-gradient-to-r from-purple-600 to-purple-700 text-white';
+      case 'orange':
+        return 'bg-gradient-to-r from-orange-600 to-orange-500 text-white';
+      case 'amber':
+        return 'bg-gradient-to-r from-amber-600 to-amber-500 text-white';
       case 'slate':
         return 'bg-gradient-to-r from-slate-600 to-slate-500 text-white';
     }
   };
 
-  const getAccentColor = (color: 'blue' | 'purple' | 'slate') => {
+  const getAccentColor = (color: 'orange' | 'amber' | 'slate') => {
     switch (color) {
-      case 'blue':
-        return 'text-[#1c31a5] dark:text-[#3a89c9]';
-      case 'purple':
-        return 'text-purple-600 dark:text-purple-400';
+      case 'orange':
+        return 'text-orange-600 dark:text-orange-400';
+      case 'amber':
+        return 'text-amber-600 dark:text-amber-400';
       case 'slate':
         return 'text-slate-600 dark:text-slate-400';
     }
@@ -53,11 +54,11 @@ const PricingSection = ({ plans }: PricingSectionProps) => {
 
   return (
     <section id="planes" className="relative py-20 bg-white dark:bg-neutral-950 overflow-hidden">
-      {/* Floating Dental Elements Background */}
+      {/* Floating Construction Elements Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-5 dark:opacity-10">
-        {/* Tooth Left */}
+        {/* Hard Hat Left */}
         <motion.div
-          className="absolute top-20 left-10 text-[#1c31a5]"
+          className="absolute top-20 left-10 text-orange-600"
           animate={{
             y: [0, -20, 0],
             rotate: [0, 10, 0],
@@ -69,13 +70,13 @@ const PricingSection = ({ plans }: PricingSectionProps) => {
           }}
         >
           <svg width="100" height="100" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2C9.24 2 7 4.24 7 7v3c0 1.1-.9 2-2 2v10h14V12c-1.1 0-2-.9-2-2V7c0-2.76-2.24-5-5-5zm0 2c1.66 0 3 1.34 3 3v3c0 .35.06.68.17 1H8.83c.11-.32.17-.65.17-1V7c0-1.66 1.34-3 3-3z"/>
+            <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 3.18l7 3.12V11c0 4.52-3.17 8.71-7 9.82-3.83-1.11-7-5.3-7-9.82V7.3l7-3.12z"/>
           </svg>
         </motion.div>
 
-        {/* Tooth Right */}
+        {/* Crane Right */}
         <motion.div
-          className="absolute bottom-32 right-16 text-[#3a89c9]"
+          className="absolute bottom-32 right-16 text-orange-500"
           animate={{
             y: [0, 15, 0],
             rotate: [0, -8, 0],
@@ -88,13 +89,13 @@ const PricingSection = ({ plans }: PricingSectionProps) => {
           }}
         >
           <svg width="90" height="90" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2C9.24 2 7 4.24 7 7v3c0 1.1-.9 2-2 2v10h14V12c-1.1 0-2-.9-2-2V7c0-2.76-2.24-5-5-5zm0 2c1.66 0 3 1.34 3 3v3c0 .35.06.68.17 1H8.83c.11-.32.17-.65.17-1V7c0-1.66 1.34-3 3-3z"/>
+            <path d="M20 3h-1V1h-2v2h-1c-.55 0-1 .45-1 1v3c0 .55.45 1 1 1h4c.55 0 1-.45 1-1V4c0-.55-.45-1-1-1zM6 11V8H4v3H3v9h3v-6h3v6h3v-9h-1zm8-6v2h3v14h2V7h3V5h-8z"/>
           </svg>
         </motion.div>
 
-        {/* Sparkle Top Right */}
+        {/* Building Blocks Top Right */}
         <motion.div
-          className="absolute top-40 right-20 text-[#3a89c9]"
+          className="absolute top-40 right-20 text-amber-500"
           animate={{
             scale: [1, 1.3, 1],
             rotate: [0, 180, 360],
@@ -106,13 +107,13 @@ const PricingSection = ({ plans }: PricingSectionProps) => {
           }}
         >
           <svg width="60" height="60" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2l2.5 7.5L22 12l-7.5 2.5L12 22l-2.5-7.5L2 12l7.5-2.5L12 2z"/>
+            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
           </svg>
         </motion.div>
 
-        {/* Dental Mirror Center */}
+        {/* Hammer Center */}
         <motion.div
-          className="absolute top-1/2 left-1/4 text-[#3a89c9]"
+          className="absolute top-1/2 left-1/4 text-orange-500"
           animate={{
             rotate: [0, 20, 0],
             x: [0, 15, 0],
@@ -124,9 +125,8 @@ const PricingSection = ({ plans }: PricingSectionProps) => {
             delay: 0.5,
           }}
         >
-          <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-            <circle cx="8" cy="8" r="6"/>
-            <line x1="12" y1="12" x2="22" y2="22"/>
+          <svg width="80" height="80" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M13.7803 6.96967L17.0303 3.71967C17.3232 3.42678 17.7981 3.42678 18.091 3.71967L20.2803 5.90901C20.5732 6.2019 20.5732 6.67678 20.2803 6.96967L17.0303 10.2197C16.7374 10.5126 16.2625 10.5126 15.9697 10.2197L13.7803 8.03033C13.4874 7.73744 13.4874 7.26256 13.7803 6.96967Z"/>
           </svg>
         </motion.div>
       </div>
@@ -140,10 +140,10 @@ const PricingSection = ({ plans }: PricingSectionProps) => {
             transition={{ duration: 0.6 }}
           >
             <h2 className="heading-2 mb-4 text-neutral-900 dark:text-neutral-100">
-              Planes transparentes y escalables
+              Planes diseñados para constructoras
             </h2>
             <p className="text-xl text-neutral-600 dark:text-neutral-400 mb-8">
-              Elige el plan que mejor se adapte a tu consultorio
+              Elige el plan que mejor se adapte al tamaño de tu empresa
             </p>
           </motion.div>
 
@@ -175,7 +175,7 @@ const PricingSection = ({ plans }: PricingSectionProps) => {
             >
               Anual
               <span className="absolute -top-2 -right-2 px-2 py-0.5 bg-green-500 text-white text-xs font-bold rounded-full">
-                Ahorra
+                12% OFF
               </span>
             </button>
           </motion.div>
@@ -195,8 +195,8 @@ const PricingSection = ({ plans }: PricingSectionProps) => {
               <div
                 className={`h-full p-8 rounded-3xl border-2 transition-all duration-300 ${
                   plan.highlighted
-                    ? 'border-[#1c31a5] dark:border-[#3a89c9] bg-gradient-to-br from-[#e9f2f9] to-[#9cc4e4]/30 dark:from-[#1c31a5]/20 dark:to-[#101f78]/30 shadow-2xl shadow-[#3a89c9]/20'
-                    : 'border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 hover:border-[#3a89c9] dark:hover:border-[#3a89c9] hover:shadow-xl'
+                    ? 'border-orange-500 dark:border-orange-500 bg-gradient-to-br from-orange-50 to-amber-50/30 dark:from-orange-900/20 dark:to-slate-800/30 shadow-2xl shadow-orange-500/20'
+                    : 'border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 hover:border-orange-400 dark:hover:border-orange-400 hover:shadow-xl'
                 }`}
               >
                 {/* Badge */}
@@ -220,25 +220,35 @@ const PricingSection = ({ plans }: PricingSectionProps) => {
 
                 {/* Pricing */}
                 <div className="mb-8">
-                  <div className="flex items-baseline gap-2 mb-2">
-                    <span className="text-5xl font-bold text-neutral-900 dark:text-neutral-100">
-                      {formatPrice(billingCycle === 'monthly' ? plan.monthlyPrice : Math.round(plan.yearlyPrice / 12))}
-                    </span>
-                    <span className="text-xl text-neutral-600 dark:text-neutral-400">/mes</span>
-                  </div>
-                  {billingCycle === 'yearly' && (
-                    <div className="flex items-baseline gap-2">
-                      <span className={`text-2xl font-bold ${getAccentColor(plan.badgeColor)}`}>
-                        {formatPrice(plan.yearlyPrice)}
-                      </span>
-                      <span className="text-lg text-neutral-600 dark:text-neutral-400">/año</span>
-                      <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-semibold bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400">
-                        {plan.discount}% OFF
+                  {plan.customPrice ? (
+                    <div className="flex items-baseline gap-2 mb-2">
+                      <span className="text-5xl font-bold text-neutral-900 dark:text-neutral-100">
+                        Personalizado
                       </span>
                     </div>
+                  ) : (
+                    <>
+                      <div className="flex items-baseline gap-2 mb-2">
+                        <span className="text-5xl font-bold text-neutral-900 dark:text-neutral-100">
+                          {formatPrice(billingCycle === 'monthly' ? plan.monthlyPrice! : Math.round(plan.yearlyPrice! / 12))}
+                        </span>
+                        <span className="text-xl text-neutral-600 dark:text-neutral-400">/mes</span>
+                      </div>
+                      {billingCycle === 'yearly' && (
+                        <div className="flex items-baseline gap-2">
+                          <span className={`text-2xl font-bold ${getAccentColor(plan.badgeColor)}`}>
+                            {formatPrice(plan.yearlyPrice!)}
+                          </span>
+                          <span className="text-lg text-neutral-600 dark:text-neutral-400">/año</span>
+                          <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-semibold bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400">
+                            {plan.discount}% OFF
+                          </span>
+                        </div>
+                      )}
+                    </>
                   )}
                   <p className="text-sm text-neutral-500 dark:text-neutral-500 mt-3">
-                    {billingCycle === 'monthly' ? '+ 7 días de prueba gratuita' : '+ Migración de datos incluida'}
+                    {plan.customPrice ? 'Cotización personalizada según necesidades' : billingCycle === 'monthly' ? 'Facturación mensual' : 'Facturación anual'}
                   </p>
                 </div>
 
@@ -253,7 +263,7 @@ const PricingSection = ({ plans }: PricingSectionProps) => {
                       transition={{ duration: 0.4, delay: 0.1 + featureIndex * 0.05 }}
                       className="flex items-start gap-3"
                     >
-                      <div className={`flex-shrink-0 w-6 h-6 rounded-full ${plan.highlighted ? 'bg-gradient-to-br from-[#1c31a5] to-[#3a89c9]' : plan.badgeColor === 'purple' ? 'bg-purple-500' : 'bg-slate-500'} flex items-center justify-center mt-0.5`}>
+                      <div className={`flex-shrink-0 w-6 h-6 rounded-full ${plan.highlighted ? 'bg-gradient-to-br from-orange-600 to-orange-500' : 'bg-slate-500'} flex items-center justify-center mt-0.5`}>
                         <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
                         </svg>
@@ -270,11 +280,11 @@ const PricingSection = ({ plans }: PricingSectionProps) => {
                   href="/#contacto"
                   className={`w-full justify-center text-lg py-4 rounded-xl font-semibold transition-all duration-300 inline-flex items-center gap-2 ${
                     plan.highlighted
-                      ? 'bg-gradient-to-r from-[#f26c4f] to-[#f26c4f] text-white shadow-lg hover:shadow-xl hover:shadow-[#f26c4f]/50 hover:scale-105'
+                      ? 'bg-gradient-to-r from-orange-600 to-orange-500 text-white shadow-lg hover:shadow-xl hover:shadow-orange-500/50 hover:scale-105'
                       : 'bg-neutral-900 dark:bg-neutral-700 text-white hover:bg-neutral-800 dark:hover:bg-neutral-600 shadow-lg hover:shadow-xl'
                   }`}
                 >
-                  {plan.highlighted ? 'Comenzar prueba gratuita' : 'Solicitar información'}
+                  {plan.customPrice ? 'Solicitar Cotización' : 'Comenzar ahora'}
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
                   </svg>
@@ -282,7 +292,7 @@ const PricingSection = ({ plans }: PricingSectionProps) => {
 
                 {/* Highlight Glow */}
                 {plan.highlighted && (
-                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#1c31a5] to-[#3a89c9] opacity-5 pointer-events-none" />
+                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-orange-600 to-orange-500 opacity-5 pointer-events-none" />
                 )}
               </div>
             </motion.div>
@@ -298,18 +308,18 @@ const PricingSection = ({ plans }: PricingSectionProps) => {
           className="mt-16 text-center"
         >
           <div className="inline-flex flex-col items-center gap-4 p-8 bg-gradient-to-br from-neutral-50 to-neutral-100 dark:from-neutral-800 dark:to-neutral-900 rounded-2xl border border-neutral-200 dark:border-neutral-700">
-            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#1c31a5] to-[#3a89c9] flex items-center justify-center">
+            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-orange-600 to-orange-500 flex items-center justify-center">
               <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
               </svg>
             </div>
             <div>
               <p className="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-2">
-                ¿Tienes dudas sobre qué plan elegir?
+                ¿Necesitas un plan a medida?
               </p>
               <a
                 href="/#contacto"
-                className="text-[#1c31a5] dark:text-[#3a89c9] hover:text-[#101f78] dark:hover:text-[#9cc4e4] font-medium inline-flex items-center gap-2 transition-colors duration-300"
+                className="text-orange-600 dark:text-orange-400 hover:text-orange-700 dark:hover:text-orange-300 font-medium inline-flex items-center gap-2 transition-colors duration-300"
               >
                 Agenda una consulta gratuita con nuestro equipo
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

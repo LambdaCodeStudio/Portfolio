@@ -1,0 +1,192 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import { getProjectBySlug } from '../../data/projects';
+import HeroSection from '../../components/maestro-obras/HeroSection';
+import FeaturesGrid from '../../components/maestro-obras/FeaturesGrid';
+import PricingSection from '../../components/maestro-obras/PricingSection';
+import TechnologyStack from '../../components/maestro-obras/TechnologyStack';
+import FinalCTA from '../../components/maestro-obras/FinalCTA';
+
+const project = getProjectBySlug('maestro-obras');
+
+if (!project) {
+  return Astro.redirect('/404');
+}
+
+// Define the pricing data with construction-focused plans
+const pricingPlans = [
+  {
+    name: 'Plan Starter',
+    badge: 'PEQUEÑAS',
+    badgeColor: 'slate' as const,
+    description: 'Ideal para contratistas y pequeñas obras',
+    monthlyPrice: 80000,
+    yearlyPrice: 840000,
+    discount: 12,
+    features: [
+      'Hasta 3 proyectos simultáneos',
+      'Gestión de hasta 5 usuarios',
+      'Control de presupuestos básico',
+      'Inventario de materiales',
+      'Hitos y seguimiento de avance',
+      'Reportes estándar',
+      'Soporte por email',
+      'Backup semanal'
+    ],
+    highlighted: false,
+    customPrice: false
+  },
+  {
+    name: 'Plan Professional',
+    badge: 'MÁS POPULAR',
+    badgeColor: 'orange' as const,
+    description: 'Para empresas constructoras medianas',
+    monthlyPrice: 180000,
+    yearlyPrice: 1900000,
+    discount: 12,
+    features: [
+      'Hasta 15 proyectos simultáneos',
+      'Gestión de hasta 20 usuarios',
+      'Presupuestos versionados completos',
+      'Inventario dual (general + por proyecto)',
+      'Órdenes de compra con aprobaciones',
+      'Control financiero avanzado',
+      'Reportes y exportación Excel/PDF',
+      'Sistema completo de permisos',
+      'Soporte prioritario',
+      'Backup diario automático',
+      'API REST para integraciones'
+    ],
+    highlighted: true,
+    customPrice: false
+  },
+  {
+    name: 'Plan Enterprise',
+    badge: 'A MEDIDA',
+    badgeColor: 'amber' as const,
+    description: 'Para grandes constructoras y empresas',
+    features: [
+      'Proyectos ilimitados',
+      'Usuarios ilimitados',
+      'Todas las funcionalidades incluidas',
+      'Módulos personalizados según necesidades',
+      'Infraestructura dedicada',
+      'Multi-sucursal avanzado',
+      'Integraciones personalizadas',
+      'Capacitación presencial del equipo',
+      'Soporte 24/7 dedicado',
+      'SLA 99.9% garantizado',
+      'Backup continuo en tiempo real',
+      'Implementación on-premise disponible'
+    ],
+    highlighted: false,
+    customPrice: true
+  }
+];
+
+// Define features with construction-specific icons
+const features = [
+  {
+    icon: 'project',
+    title: 'Gestión de Proyectos',
+    description: 'Control completo del ciclo de vida de cada obra desde la planificación hasta la entrega final.'
+  },
+  {
+    icon: 'budget',
+    title: 'Presupuestos Versionados',
+    description: 'Crea múltiples versiones de presupuestos con historial completo y comparación de cambios.'
+  },
+  {
+    icon: 'milestone',
+    title: 'Sistema de Hitos',
+    description: 'Define etapas personalizables con cálculo automático de progreso y alertas de vencimiento.'
+  },
+  {
+    icon: 'inventory',
+    title: 'Inventario Inteligente',
+    description: 'Catálogo general de materiales + stock específico por proyecto con alertas de mínimos.'
+  },
+  {
+    icon: 'purchase',
+    title: 'Órdenes de Compra',
+    description: 'Gestión completa de compras simples y múltiples con flujo de aprobación configurable.'
+  },
+  {
+    icon: 'financial',
+    title: 'Control Financiero',
+    description: 'Seguimiento detallado de gastos, pagos, facturación y análisis de rentabilidad en tiempo real.'
+  },
+  {
+    icon: 'team',
+    title: 'Gestión de Equipos',
+    description: 'Sistema granular de roles con 78 permisos específicos para cada tipo de usuario.'
+  },
+  {
+    icon: 'dashboard',
+    title: 'Dashboard Interactivo',
+    description: 'Métricas en tiempo real con gráficos de avance, costos, recursos y productividad.'
+  },
+  {
+    icon: 'export',
+    title: 'Exportación Avanzada',
+    description: 'Genera reportes profesionales en Excel, PDF y CSV con plantillas personalizables.'
+  }
+];
+---
+
+<MainLayout
+  title={`${project.title} - Sistema de Gestión de Construcción Premium`}
+  description={project.shortDescription}
+>
+  <!-- Hero Section -->
+  <HeroSection client:load />
+
+  <!-- Features Grid -->
+  <FeaturesGrid features={features} client:load />
+
+  <!-- Pricing Section -->
+  <PricingSection plans={pricingPlans} client:load />
+
+  <!-- Technology Stack -->
+  <TechnologyStack technologies={project.technologies} client:load />
+
+  <!-- Final CTA -->
+  <FinalCTA client:load />
+
+  <!-- Back Navigation -->
+  <div class="container-custom py-12 bg-white dark:bg-[#0f172a]">
+    <a
+      href="/#proyectos"
+      class="inline-flex items-center text-sm font-medium text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
+    >
+      <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+      Volver a proyectos
+    </a>
+  </div>
+</MainLayout>
+
+<style>
+  /* Custom styles for Maestro Obras page */
+  :global(.construction-gradient) {
+    background: linear-gradient(135deg, #ea580c 0%, #f97316 100%);
+  }
+
+  :global(.glass-effect-construction) {
+    background: rgba(249, 115, 22, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(249, 115, 22, 0.2);
+  }
+
+  :global(.construction-glow) {
+    box-shadow: 0 0 40px rgba(249, 115, 22, 0.4);
+  }
+
+  :global(.blueprint-grid) {
+    background-image:
+      linear-gradient(rgba(249, 115, 22, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(249, 115, 22, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+</style>

@@ -9,7 +9,7 @@ const FinalCTA = () => {
   ];
 
   return (
-    <section className="relative py-24 overflow-hidden bg-gradient-to-br from-neutral-900 via-teal-950 to-neutral-900">
+    <section className="relative py-24 overflow-hidden bg-gradient-to-br from-[#010937] via-[#101f78] to-[#020f59]">
       {/* Animated Background */}
       <div className="absolute inset-0 opacity-10">
         <motion.div
@@ -23,14 +23,14 @@ const FinalCTA = () => {
             repeatType: 'reverse',
           }}
           style={{
-            backgroundImage: 'radial-gradient(circle at 20% 50%, rgba(20, 184, 166, 0.3) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(6, 182, 212, 0.3) 0%, transparent 50%)',
+            backgroundImage: 'radial-gradient(circle at 20% 50%, rgba(28, 49, 165, 0.5) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(58, 137, 201, 0.5) 0%, transparent 50%)',
             backgroundSize: '100% 100%',
           }}
         />
       </div>
 
       {/* Grid Pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(20,184,166,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(20,184,166,0.05)_1px,transparent_1px)] bg-[size:50px_50px]" />
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(28,49,165,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(28,49,165,0.1)_1px,transparent_1px)] bg-[size:50px_50px]" />
 
       <div className="container-custom relative z-10">
         {/* Stats Bar */}
@@ -50,7 +50,7 @@ const FinalCTA = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="text-center"
             >
-              <div className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-400 mb-2">
+              <div className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#9cc4e4] to-[#3a89c9] mb-2">
                 {stat.value}
               </div>
               <div className="text-neutral-400 font-medium">
@@ -71,7 +71,7 @@ const FinalCTA = () => {
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
               ¿Listo para modernizar
               <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-400">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#9cc4e4] to-[#3a89c9]">
                 tu consultorio?
               </span>
             </h2>
@@ -86,7 +86,7 @@ const FinalCTA = () => {
           >
             Únete a cientos de odontólogos que ya digitalizaron su práctica
             <br className="hidden md:block" />
-            con <span className="font-semibold text-teal-400">OdontoCare</span>
+            con <span className="font-semibold text-[#3a89c9]">OdontoCare</span>
           </motion.p>
 
           {/* CTA Buttons */}
@@ -99,13 +99,13 @@ const FinalCTA = () => {
           >
             <a
               href="/#contacto"
-              className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 text-lg font-semibold text-neutral-900 bg-white rounded-xl shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 hover:scale-105"
+              className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 text-lg font-semibold text-white bg-[#f26c4f] rounded-xl shadow-2xl hover:shadow-[#f26c4f]/50 transition-all duration-300 hover:scale-105"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
               </svg>
               Probar 7 días gratis
-              <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-teal-500 to-cyan-500 opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
+              <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-[#1c31a5] to-[#3a89c9] opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
             </a>
             <a
               href="#planes"
@@ -133,13 +133,13 @@ const FinalCTA = () => {
               <span>Sin tarjeta de crédito</span>
             </div>
             <div className="flex items-center gap-2">
-              <svg className="w-5 h-5 text-teal-400" fill="currentColor" viewBox="0 0 20 20">
+              <svg className="w-5 h-5 text-[#3a89c9]" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
               </svg>
               <span>Configuración en minutos</span>
             </div>
             <div className="flex items-center gap-2">
-              <svg className="w-5 h-5 text-cyan-400" fill="currentColor" viewBox="0 0 20 20">
+              <svg className="w-5 h-5 text-[#9cc4e4]" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
               </svg>
               <span>Soporte dedicado</span>
@@ -148,10 +148,10 @@ const FinalCTA = () => {
         </div>
 
         {/* Decorative Dental Elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-30">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
           {/* Floating Tooth Top Left */}
           <motion.div
-            className="absolute top-10 left-10 text-teal-500/30"
+            className="absolute top-10 left-10 text-[#1c31a5]/50"
             animate={{
               y: [0, -15, 0],
               rotate: [0, 8, 0],
@@ -169,7 +169,7 @@ const FinalCTA = () => {
 
           {/* Sparkle Bottom Right */}
           <motion.div
-            className="absolute bottom-16 right-16 text-cyan-400/40"
+            className="absolute bottom-16 right-16 text-[#3a89c9]/40"
             animate={{
               scale: [1, 1.5, 1],
               opacity: [0.4, 0.8, 0.4],
@@ -188,7 +188,7 @@ const FinalCTA = () => {
 
           {/* Toothbrush Top Right */}
           <motion.div
-            className="absolute top-20 right-20 text-blue-400/25"
+            className="absolute top-20 right-20 text-[#9cc4e4]/30"
             animate={{
               rotate: [0, -10, 0],
               y: [0, 10, 0],
@@ -207,7 +207,7 @@ const FinalCTA = () => {
 
           {/* Dental Mirror Bottom Left */}
           <motion.div
-            className="absolute bottom-24 left-20 text-teal-400/30"
+            className="absolute bottom-24 left-20 text-[#3a89c9]/40"
             animate={{
               rotate: [0, 15, 0],
               x: [0, 8, 0],
@@ -227,10 +227,11 @@ const FinalCTA = () => {
 
           {/* Small Sparkles */}
           <motion.div
-            className="absolute top-40 right-40 text-cyan-300/20"
+            className="absolute top-40 right-40 text-[#00c8ff]/25"
             animate={{
-              scale: [1, 1.2, 1],
-              opacity: [0.2, 0.5, 0.2],
+              scale: [1, 1.3, 1],
+              opacity: [0.2, 0.6, 0.2],
+              rotate: [0, 90, 180],
             }}
             transition={{
               duration: 3,
@@ -239,7 +240,7 @@ const FinalCTA = () => {
               delay: 2,
             }}
           >
-            <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 2l2.5 7.5L22 12l-7.5 2.5L12 22l-2.5-7.5L2 12l7.5-2.5L12 2z"/>
             </svg>
           </motion.div>
