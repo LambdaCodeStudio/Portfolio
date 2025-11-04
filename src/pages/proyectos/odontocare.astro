@@ -1,0 +1,162 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import { getProjectBySlug } from '../../data/projects';
+import HeroSection from '../../components/odontocare/HeroSection';
+import FreeTrialBanner from '../../components/odontocare/FreeTrialBanner';
+import FeaturesGrid from '../../components/odontocare/FeaturesGrid';
+import PricingSection from '../../components/odontocare/PricingSection';
+import TechnologyStack from '../../components/odontocare/TechnologyStack';
+import FinalCTA from '../../components/odontocare/FinalCTA';
+
+const project = getProjectBySlug('odontocare');
+
+if (!project) {
+  return Astro.redirect('/404');
+}
+
+// Define the pricing data
+const pricingPlans = [
+  {
+    name: 'Plan Multi-Tenant',
+    badge: 'MÁS POPULAR',
+    badgeColor: 'teal',
+    description: 'Sistema en la nube completo para consultorios modernos',
+    monthlyPrice: 40000,
+    yearlyPrice: 420000,
+    discount: 12,
+    features: [
+      'Sistema en la nube (SaaS)',
+      'Todas las funcionalidades incluidas',
+      'Actualizaciones automáticas',
+      'Backups automáticos diarios',
+      'Soporte por email y chat',
+      'Capacitación inicial incluida',
+      'Acceso multi-dispositivo',
+      'Sin costos de instalación'
+    ],
+    highlighted: true
+  },
+  {
+    name: 'Sistema Dedicado',
+    badge: 'ENTERPRISE',
+    badgeColor: 'purple',
+    description: 'Infraestructura exclusiva para redes de consultorios',
+    monthlyPrice: 120000,
+    yearlyPrice: 1000000,
+    discount: 17,
+    features: [
+      'Todo del plan Multi-Tenant +',
+      'Servidor dedicado exclusivo',
+      'Base de datos propia aislada',
+      'Gestión multi-sucursal avanzada',
+      'Personalización completa del sistema',
+      'API privada para integraciones',
+      'Soporte prioritario 24/7',
+      'SLA 99.9% de uptime garantizado'
+    ],
+    highlighted: false
+  }
+];
+
+// Define features
+const features = [
+  {
+    icon: 'users',
+    title: 'Gestión de Pacientes',
+    description: 'Fichas completas con historial clínico, obra social, contactos de emergencia y más.'
+  },
+  {
+    icon: 'calendar',
+    title: 'Agenda Inteligente',
+    description: 'Calendario con confirmaciones automáticas, verificación de disponibilidad y recordatorios.'
+  },
+  {
+    icon: 'tooth',
+    title: 'Odontograma Digital',
+    description: 'Editor visual con 32 dientes, tratamiento por superficie, 3 notaciones internacionales.'
+  },
+  {
+    icon: 'document',
+    title: 'Historia Clínica Digital',
+    description: 'Anamnesis completa, antecedentes médicos, alergias, medicación y archivos adjuntos.'
+  },
+  {
+    icon: 'payment',
+    title: 'Gestión de Pagos',
+    description: 'Control de prestaciones, pagos parciales, sobrepagos, múltiples métodos de pago.'
+  },
+  {
+    icon: 'shield',
+    title: 'Seguridad Enterprise',
+    description: 'Encriptación, auditoría completa, HIPAA/GDPR compliant, backups automáticos.'
+  },
+  {
+    icon: 'audit',
+    title: 'Sistema de Auditoría',
+    description: 'Trazabilidad completa de todas las operaciones, detección de anomalías, exportación.'
+  },
+  {
+    icon: 'chart',
+    title: 'Reportes Avanzados',
+    description: 'Estadísticas financieras, ocupación, productividad, exportación a Excel/PDF.'
+  },
+  {
+    icon: 'devices',
+    title: 'Multi-dispositivo',
+    description: 'Accede desde cualquier lugar: PC, tablet, smartphone. Responsive y optimizado.'
+  }
+];
+---
+
+<MainLayout
+  title={`${project.title} - Sistema de Gestión Odontológica Premium`}
+  description={project.shortDescription}
+>
+  <!-- Hero Section -->
+  <HeroSection client:load />
+
+  <!-- Free Trial Banner -->
+  <FreeTrialBanner client:load />
+
+  <!-- Features Grid -->
+  <FeaturesGrid features={features} client:load />
+
+  <!-- Pricing Section -->
+  <PricingSection plans={pricingPlans} client:load />
+
+  <!-- Technology Stack -->
+  <TechnologyStack technologies={project.technologies} client:load />
+
+  <!-- Final CTA -->
+  <FinalCTA client:load />
+
+  <!-- Back Navigation -->
+  <div class="container-custom py-12">
+    <a
+      href="/#proyectos"
+      class="inline-flex items-center text-sm font-medium text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
+    >
+      <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+      Volver a proyectos
+    </a>
+  </div>
+</MainLayout>
+
+<style>
+  /* Custom styles for Odontocare page */
+  :global(.medical-gradient) {
+    background: linear-gradient(135deg, #14b8a6 0%, #06b6d4 100%);
+  }
+
+  :global(.glass-effect) {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  :global(.medical-glow) {
+    box-shadow: 0 0 40px rgba(20, 184, 166, 0.3);
+  }
+</style>

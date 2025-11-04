@@ -22,14 +22,14 @@ export const projects: Project[] = [
     id: '1',
     slug: 'distrilink',
     title: 'DistriLink',
-    shortDescription: 'Plataforma completa de e-commerce con tienda online y panel administrativo integral para gestión de productos, pedidos y análisis de ventas.',
+    shortDescription: 'Plataforma completa de e-commerce con tienda online y panel administrativo integral para gestión de productos, pedidos, usuarios del sistema, vehiculos/conductores y análisis de ventas.',
     longDescription: 'DistriLink es una solución completa de comercio electrónico que combina una tienda online moderna con un potente panel administrativo. Diseñada para empresas distribuidoras, permite gestionar catálogos de productos extensos, procesar pedidos en tiempo real, y obtener insights detallados sobre el rendimiento del negocio.',
     featured: true,
-    technologies: ['React', 'Node.js', 'Express', 'PostgreSQL', 'Tailwind CSS', 'Redux', 'JWT'],
+    technologies: ['Astro', 'React', 'Redux', 'Tailwind CSS', 'TypeScript', 'Node.js', 'MongoDB'],
     category: 'fullstack',
-    image: '/images/distrilink-hero.jpg',
+    image: '/images/distrilink-hero.png',
     images: [
-      '/images/distrilink-hero.jpg',
+      '/images/distrilink-hero.png',
       '/images/distrilink-admin.jpg',
       '/images/distrilink-products.jpg',
       '/images/distrilink-orders.jpg'
@@ -37,13 +37,11 @@ export const projects: Project[] = [
     challenges: [
       'Gestión eficiente de catálogos con miles de productos',
       'Sincronización en tiempo real entre la tienda y el inventario',
-      'Generación de reportes de ventas y análisis de tendencias',
-      'Sistema de roles y permisos para múltiples usuarios administrativos'
+      'Generación de reportes de ventas',
     ],
     solutions: [
-      'Implementación de paginación y búsqueda optimizada con índices en PostgreSQL',
+      'Implementación de paginación y búsqueda optimizada con índices en MongoDB',
       'Sistema de eventos y actualizaciones automáticas del stock',
-      'Dashboard con gráficos interactivos y exportación de datos',
       'Arquitectura de permisos basada en roles (RBAC) escalable'
     ],
     features: [
@@ -51,12 +49,11 @@ export const projects: Project[] = [
       'Panel administrativo completo',
       'Gestión de productos e inventario',
       'Sistema de pedidos y tracking',
-      'Dashboard con métricas de ventas',
       'Gestión de clientes y usuarios',
       'Reportes y exportación de datos',
       'Sistema de notificaciones'
     ],
-    year: 2024
+    year: 2025
   },
   {
     id: '2',
@@ -65,7 +62,7 @@ export const projects: Project[] = [
     shortDescription: 'Sistema integral de gestión para consultorios odontológicos con historias clínicas digitales, agenda de turnos y seguimiento de tratamientos.',
     longDescription: 'Odontocare es una aplicación completa diseñada específicamente para consultorios odontológicos. Permite gestionar historias clínicas de pacientes, agendar turnos, hacer seguimiento de tratamientos, y administrar la facturación. Todo en una interfaz intuitiva y segura que cumple con las normativas de protección de datos médicos.',
     featured: true,
-    technologies: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Tailwind CSS', 'Socket.io'],
+    technologies: ['Astro', 'React', 'Redux', 'Tailwind CSS', 'TypeScript', 'Node.js', 'MongoDB'],
     category: 'fullstack',
     image: '/images/odontocare-hero.jpg',
     images: [
